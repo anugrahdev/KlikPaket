@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">iKurir</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ongkir">Ongkos Kirim</string>
+    <string name="origin">Origin</string>
+    <string name="destination">Destination</string>
+    <string name="weight">Weight</string>
+    <string name="kota_kabupaten">Kota/Kabupaten</string>
+    <string name="kecamatan">Kecamatan</string>
+    <string name="courier">Courier</string>
+    <string name="hitungongkir">Hitung Ongkir</string>
+
+    <string-array name="kurir">
+        <item>Semua</item>
+        <item>JNE</item>
+        <item>JNT</item>
+        <item>SiCepat</item>
+        <item>Tiki</item>
+        <item>Lion</item>
+        <item>Alfatrex</item>
+        <item>PCP</item>
+        <item>SAP</item>
+    </string-array>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.anugrahdev.app.ikurir.ui.home.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_homeFragment_to_costFragment"
+            app:destination="@id/costFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_trackFragment"
+            app:destination="@id/trackFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/costFragment"
+        android:name="com.anugrahdev.app.ikurir.ui.cost.CostFragment"
+        android:label="Shipping Cost"
+        tools:layout="@layout/cost_fragment" />
+    <fragment
+        android:id="@+id/trackFragment"
+        android:name="com.anugrahdev.app.ikurir.ui.track.TrackFragment"
+        android:label="Track"
+        tools:layout="@layout/track_fragment" />
+</navigation>
