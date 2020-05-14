@@ -23,4 +23,12 @@
         <item>PCP</item>
         <item>SAP</item>
     </string-array>
+    <string-array name="kurir_resi">
+        <item>JNE</item>
+        <item>JNT</item>
+        <item>SiCepat</item>
+        <item>Tiki</item>
+        <item>Lion</item>
+    </string-array>
+
 </resources>

@@ -1,5 +1,7 @@
-package com.anugrahdev.app.ikurir.ui.cost
+package com.anugrahdev.app.ikurir.ui.shipmentcost
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,13 +9,16 @@ import com.anugrahdev.app.ikurir.data.models.cities.CitiesResult
 import com.anugrahdev.app.ikurir.data.models.districts.DistrictsResult
 import com.anugrahdev.app.ikurir.data.models.shippingcost.ShippingCostResult
 import com.anugrahdev.app.ikurir.data.repositories.CostRepository
+import com.anugrahdev.app.ikurir.utils.ApiException
 import kotlinx.coroutines.launch
 
 class CostViewModel(private val repository: CostRepository) : ViewModel() {
 
     val cities = MutableLiveData<List<CitiesResult>>()
     val districts = MutableLiveData<List<DistrictsResult>>()
-    val shippingcost = MutableLiveData<List<ShippingCostResult>>()
+    private val _shippingcost = MutableLiveData<List<ShippingCostResult>>()
+    val shippingcost : LiveData<List<ShippingCostResult>>
+        get() = _shippingcost
 
     fun getCities(query:String) = viewModelScope.launch {
         val response = repository.getCities(query)
@@ -26,9 +31,15 @@ class CostViewModel(private val repository: CostRepository) : ViewModel() {
     }
 
     fun postShippingCost(originId:Int, destId:Int, weight:Int, courier:String) = viewModelScope.launch {
-        val response = repository.postShippingCost(originId,destId,weight,courier)
-        shippingcost.postValue(response.data.results)
+        try{
+            val response = repository.postShippingCost(originId,destId,weight,courier)
+            _shippingcost.value = response.data.results
+        }catch (e:ApiException){
+            Log.d("CostViewModel", e.toString())
+        }
     }
+
+
 
 
 

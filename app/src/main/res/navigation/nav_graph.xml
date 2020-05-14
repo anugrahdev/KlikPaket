@@ -16,17 +16,20 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_homeFragment_to_trackFragment"
-            app:destination="@id/trackFragment" />
+            android:id="@+id/action_homeFragment_to_trackWaybillFragment"
+            app:destination="@id/trackWaybillFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/costFragment"
-        android:name="com.anugrahdev.app.ikurir.ui.cost.CostFragment"
+        android:name="com.anugrahdev.app.ikurir.ui.shipmentcost.CostFragment"
         android:label="Shipping Cost"
         tools:layout="@layout/cost_fragment" />
     <fragment
-        android:id="@+id/trackFragment"
-        android:name="com.anugrahdev.app.ikurir.ui.track.TrackFragment"
-        android:label="Track"
-        tools:layout="@layout/track_fragment" />
+        android:id="@+id/trackWaybillFragment"
+        android:name="com.anugrahdev.app.ikurir.ui.trackwaybill.TrackWaybillFragment"
+        android:label="Track Waybill" />
 </navigation>

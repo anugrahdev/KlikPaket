@@ -1,4 +1,4 @@
-package com.anugrahdev.app.ikurir.ui.cost
+package com.anugrahdev.app.ikurir.ui.shipmentcost
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

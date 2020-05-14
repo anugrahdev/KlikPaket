@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         }
 
         cv_cost.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_costFragment, null))
-        cv_track.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_trackFragment, null))
+        cv_track.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_trackWaybillFragment, null))
 
     }
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="waybildetail"
+            type="com.anugrahdev.app.ikurir.data.models.waybill.WaybillDetail" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:paddingHorizontal="12dp"
+        android:orientation="horizontal">
+
+        <com.github.vipulasri.timelineview.TimelineView
+            android:id="@+id/timeline"
+            app:marker="@drawable/bg_marker"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:markerSize="20dp"
+            app:lineWidth="2dp"
+            android:layout_marginRight="8dp"
+            app:startLineColor="@color/colorPrimary"
+            app:endLineColor="@color/colorPrimary"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsmed"
+                android:textColor="@color/black"
+                android:layout_marginBottom="0dp"
+                android:includeFontPadding="false"
+                android:text="@{waybildetail.shippingDescription}"
+                tools:text="Paket telah di terima di Palembang "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@{waybildetail.cityName}"
+                tools:text="Palembang"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:includeFontPadding="false"
+                    android:text="@{waybildetail.shippingDate}"
+                    tools:text="2020-03-25"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:includeFontPadding="false"
+                    android:text=" | "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:includeFontPadding="false"
+                    android:text="@{waybildetail.shippingTime}"
+                    tools:text="09:10"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</layout>

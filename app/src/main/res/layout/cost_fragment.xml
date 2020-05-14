@@ -5,11 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_layout"
     tools:context=".ui.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         android:paddingBottom="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,7 +90,7 @@
                         android:id="@+id/actv_origin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/edittext"
+                        android:background="@drawable/bg_input"
                         android:hint="@string/kota_kabupaten"
                         android:inputType="text"
                         android:maxLines="1"
@@ -114,7 +117,7 @@
                         android:id="@+id/actv_destination"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/edittext"
+                        android:background="@drawable/bg_input"
                         android:hint="@string/kecamatan"
                         android:inputType="text"
                         android:maxLines="1"
@@ -216,15 +219,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:weightSum="6">
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_calculate_cost"
                         android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="4"
-                        android:layout_marginTop="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
                         android:focusable="false"
                         android:text="@string/hitungongkir" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_reset"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:drawableEnd="@drawable/ic_reset"
+                        android:textSize="12sp"
+                        app:backgroundTint="@color/gray" />
+
 
                 </LinearLayout>
 
@@ -243,12 +257,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_shippingcost"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_shippingcost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -261,11 +278,10 @@
             android:elevation="5dp"
             android:visibility="invisible"
             app:SpinKit_Color="@color/colorAccent"
-            app:layout_constraintBottom_toBottomOf="@+id/cv_costlist"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
+            app:layout_constraintEnd_toEndOf="@+id/materialCardView"
+            app:layout_constraintStart_toStartOf="@+id/materialCardView"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

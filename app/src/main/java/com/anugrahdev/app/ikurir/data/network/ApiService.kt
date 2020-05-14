@@ -3,6 +3,7 @@ package com.anugrahdev.app.ikurir.data.network
 import com.anugrahdev.app.ikurir.data.models.cities.CitiesResponse
 import com.anugrahdev.app.ikurir.data.models.districts.DistrictsResponse
 import com.anugrahdev.app.ikurir.data.models.shippingcost.ShippingResponse
+import com.anugrahdev.app.ikurir.data.models.waybill.WaybillResponse
 import com.anugrahdev.app.ikurir.utils.Constant.Companion.authorization
 import com.anugrahdev.app.ikurir.utils.Constant.Companion.base_url
 import okhttp3.OkHttpClient
@@ -38,6 +39,16 @@ interface ApiService {
         @Query("courier") courier:String,
         @Header("Authorization") auth:String = authorization
     ): Response<ShippingResponse>
+
+    @POST("waybill")
+    suspend fun postWaybill(
+        @Query("waybill") waybill:String,
+        @Query("courier") courier:String,
+        @Header("Authorization") auth:String = authorization
+
+    ): Response<WaybillResponse>
+
+
 
 
     companion object {

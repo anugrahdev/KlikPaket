@@ -1,13 +1,10 @@
-package com.anugrahdev.app.ikurir.ui.cost
+package com.anugrahdev.app.ikurir.ui.shipmentcost
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ProgressBar
-import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -18,10 +15,7 @@ import com.anugrahdev.app.ikurir.adapter.CostAdapter
 import com.anugrahdev.app.ikurir.utils.hide
 import com.anugrahdev.app.ikurir.utils.show
 import com.anugrahdev.app.ikurir.utils.snackbar
-import com.anugrahdev.app.ikurir.utils.toast
 import com.github.ybq.android.spinkit.sprite.Sprite
-import com.github.ybq.android.spinkit.style.CubeGrid
-import com.github.ybq.android.spinkit.style.DoubleBounce
 import com.github.ybq.android.spinkit.style.WanderingCubes
 import kotlinx.android.synthetic.main.cost_fragment.*
 import kotlinx.coroutines.*
@@ -56,12 +50,49 @@ class CostFragment : Fragment(),KodeinAware {
 
         val loadingstyle: Sprite = WanderingCubes()
         spin_kit_progress_bar.setIndeterminateDrawable(loadingstyle)
-
+        reset()
         processOriginData()
         processDestinationData()
         processWeight()
-        bindShippingCost()
+        processCalculateCost()
 
+
+
+    }
+
+    private fun reset() {
+        btn_reset.setOnClickListener {
+            actv_destination.setText("")
+            actv_origin.setText("")
+            et_weight.setText("1")
+
+        }
+    }
+
+    private fun processCalculateCost() {
+        btn_calculate_cost.setOnClickListener {
+            startLoading()
+            if (cityId!=0 && districtId !=0 && weight!=0){
+                startLoading()
+                var courier = spinner_courier.selectedItem.toString()
+                if (courier=="Semua") { courier = "jne,jnt,sicepat,tiki,lion,alfatrex,pcp,sap" }
+                viewModel.postShippingCost(cityId, districtId, weight*1000, courier.toLowerCase())
+            }else{
+                constraintLayout.snackbar("Semua form harus di isi !")
+            }
+        }
+
+        viewModel.shippingcost.observe(viewLifecycleOwner, Observer {
+            if(it.isEmpty()){
+                constraintLayout.snackbar("Courier Not Found!")
+
+            }
+            recycler_view_shippingcost.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = CostAdapter(it)
+                stopLoading()
+            }
+        })
     }
 
     private fun processOriginData(){
@@ -146,28 +177,14 @@ class CostFragment : Fragment(),KodeinAware {
         }
     }
 
-    private fun bindShippingCost(){
+    private fun startLoading(){
+        spin_kit_progress_bar.show()
+        btn_calculate_cost.text = "Loading..."
+    }
 
-
-        btn_calculate_cost.setOnClickListener {
-            if (cityId!=0 && districtId !=0 && weight!=0){
-                spin_kit_progress_bar.show()
-                btn_calculate_cost.text = "Loading..."
-                var courier = spinner_courier.selectedItem.toString()
-                if (courier=="Semua") { courier = "jne,jnt,sicepat,tiki,lion,alfatrex,pcp,sap" }
-                viewModel.postShippingCost(cityId, districtId, weight*1000, courier.toLowerCase())
-                viewModel.shippingcost.observe(viewLifecycleOwner, Observer {
-                    btn_calculate_cost.text = "HITUNG ONGKIR"
-                    spin_kit_progress_bar.hide()
-                    recycler_view_shippingcost.apply {
-                        layoutManager = LinearLayoutManager(requireContext())
-                        adapter = CostAdapter(it)
-                    }
-                })
-            }else{
-                constraintLayout.snackbar("Semua form harus di isi !")
-            }
-        }
+    private fun stopLoading(){
+        spin_kit_progress_bar.hide()
+        btn_calculate_cost.text = "HITUNG ONGKIR"
 
     }
 

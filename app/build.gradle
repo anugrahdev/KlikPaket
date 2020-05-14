@@ -37,6 +37,13 @@ android {
         enabled=true
     }
 
+    configurations.all() {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
+    }
+
+
+
 }
 
 dependencies {
@@ -87,5 +94,9 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     implementation "androidx.preference:preference-ktx:1.1.1"
+
+    //timelineview
+    implementation 'com.github.vipulasri:timelineview:1.1.4'
+
 
 }
