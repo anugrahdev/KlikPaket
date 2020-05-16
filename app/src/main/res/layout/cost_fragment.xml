@@ -253,8 +253,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="15dp"
+            android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:cardUseCompatPadding="true"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
             <LinearLayout

@@ -11,6 +11,8 @@
     <string name="kecamatan">Kecamatan</string>
     <string name="courier">Courier</string>
     <string name="hitungongkir">Hitung Ongkir</string>
+    <string name="lacak_kiriman">Lacak Kiriman</string>
+    <string name="pipe_separator"> | </string>
 
     <string-array name="kurir">
         <item>Semua</item>
@@ -24,11 +26,11 @@
         <item>SAP</item>
     </string-array>
     <string-array name="kurir_resi">
-        <item>JNE</item>
-        <item>JNT</item>
-        <item>SiCepat</item>
-        <item>Tiki</item>
-        <item>Lion</item>
+        <item>JNE Express</item>
+        <item>J&amp;T Express</item>
+        <item>Sicepat Ekspres</item>
+        <item>TIKI (Titipan Kilat) </item>
+        <item>Lion Parcel</item>
     </string-array>
 
 </resources>

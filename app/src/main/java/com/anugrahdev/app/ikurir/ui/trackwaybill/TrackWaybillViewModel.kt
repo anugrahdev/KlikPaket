@@ -14,20 +14,11 @@ import kotlinx.coroutines.launch
 
 class TrackWaybillViewModel(private val repository: WaybillRepository) : ViewModel(){
 
-    private var error:Boolean = false
     private val TAG = "TrackWaybillViewModel"
-    private val _waybilldetails = MutableLiveData<List<WaybillDetail>>()
-    val waybilldetails: LiveData<List<WaybillDetail>>
-        get() = _waybilldetails
 
     private val _waybilldata = MutableLiveData<WaybillData>()
     val waybilldata: LiveData<WaybillData>
         get() = _waybilldata
-
-    fun getWaybillDetails(waybill:String, courier:String) = viewModelScope.launch {
-        val response = repository.postWaybill(waybill, courier)
-        _waybilldetails.value = response.data.details
-    }
 
     fun getWaybillData(waybill: String, courier: String) = viewModelScope.launch {
         try{
@@ -35,16 +26,19 @@ class TrackWaybillViewModel(private val repository: WaybillRepository) : ViewMod
             _waybilldata.value = response.data
         }catch (e:Exception){
             _waybilldata.value = null
+            Log.d(TAG, e.message.toString())
         }
     }
 
-    fun errorHandling():Boolean{
-        return error
+    fun saveWaybill(waybillData: WaybillData) = viewModelScope.launch {
+        repository.upsert(waybillData)
     }
 
+    fun getSavedWaybill() = repository.getSavedWaybill()
 
-
-
+    fun deleteSavedWaybill(waybillData: WaybillData) = viewModelScope.launch {
+        repository.deleteSavedWaybill(waybillData)
+    }
 
 
 }

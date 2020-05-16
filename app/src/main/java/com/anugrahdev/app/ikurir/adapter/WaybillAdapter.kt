@@ -3,48 +3,56 @@ package com.anugrahdev.app.ikurir.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.anugrahdev.app.ikurir.R
-import com.anugrahdev.app.ikurir.data.models.waybill.WaybillDetail
+import com.anugrahdev.app.ikurir.data.models.waybill.WaybillData
 import com.anugrahdev.app.ikurir.databinding.ItemWaybilldetailBinding
-import com.github.vipulasri.timelineview.TimelineView
-import kotlinx.android.synthetic.main.item_waybilldetail.view.*
-import kotlinx.android.synthetic.main.trackwaybill_fragment.view.*
+import com.anugrahdev.app.ikurir.databinding.ItemWaybillhistoryBinding
 
-class WaybillAdapter(private val waybill:List<WaybillDetail>):RecyclerView.Adapter<WaybillAdapter.WaybillViewHolder>() {
+class WaybillAdapter():RecyclerView.Adapter<WaybillAdapter.WaybillListViewHolder>() {
 
-    var mTimelineView: TimelineView? = null
+    inner class WaybillListViewHolder(val item:ItemWaybillhistoryBinding, viewType: Int):RecyclerView.ViewHolder(item.root)
 
-    override fun getItemViewType(position: Int): Int {
-        return TimelineView.getTimeLineViewType(position, itemCount)
-    }
+    private val differCallback = object : DiffUtil.ItemCallback<WaybillData>(){
+        override fun areItemsTheSame(oldItem: WaybillData, newItem: WaybillData): Boolean {
+            return oldItem.waybillNumber == newItem.waybillNumber
+        }
 
-    inner class WaybillViewHolder(val item:ItemWaybilldetailBinding, viewType: Int):RecyclerView.ViewHolder(item.root){
-        val timeline = itemView.timeline
-
-        init {
-            timeline.initLine(viewType)
+        override fun areContentsTheSame(oldItem: WaybillData, newItem: WaybillData): Boolean {
+            return oldItem == newItem
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WaybillViewHolder {
+    val differ = AsyncListDiffer(this,  differCallback)
 
-        return WaybillViewHolder(DataBindingUtil.inflate<ItemWaybilldetailBinding>(
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WaybillListViewHolder {
+        return WaybillListViewHolder(
+            DataBindingUtil.inflate<ItemWaybillhistoryBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.item_waybilldetail,
+            R.layout.item_waybillhistory,
             parent,
             false), viewType)
-
     }
 
+    override fun getItemCount(): Int = differ.currentList.size
 
-
-
-    override fun getItemCount() = waybill.size
-
-    override fun onBindViewHolder(holder: WaybillViewHolder, position: Int) {
-        holder.item.waybildetail = waybill[position]
+    override fun onBindViewHolder(holder: WaybillListViewHolder, position: Int) {
+        val waybill = differ.currentList[position]
+        holder.itemView.apply {
+            holder.item.waybill = waybill
+            setOnClickListener {
+                onItemClickListener?.let{ it(waybill) }
+            }
+        }
     }
 
+    private var onItemClickListener: ((WaybillData)->Unit)? = null
+
+    fun setOnItemClickListener(listener : (WaybillData)->Unit){
+        onItemClickListener = listener
+    }
 
 }

@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId "com.anugrahdev.app.ikurir"
-        minSdkVersion 22
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -33,15 +33,14 @@ android {
         }
     }
 
-    dataBinding{
-        enabled=true
+    dataBinding {
+        enabled = true
     }
-
-    configurations.all() {
-        resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
-        resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
-    }
-
+//
+//    configurations.all() {
+//        resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
+//        resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
+//    }
 
 
 }
@@ -85,7 +84,7 @@ dependencies {
     implementation "org.kodein.di:kodein-di-framework-android-x:6.5.5"
 
 
-    //Android Room
+//Android Room
     implementation "androidx.room:room-runtime:2.2.0-rc01"
     implementation "androidx.room:room-ktx:2.2.0-rc01"
     kapt "androidx.room:room-compiler:2.2.0-rc01"
@@ -97,6 +96,15 @@ dependencies {
 
     //timelineview
     implementation 'com.github.vipulasri:timelineview:1.1.4'
+
+    //barcode scanner
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
+
+    //time
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.0.3'
+
+    //Material dialog
+    implementation 'com.afollestad.material-dialogs:core:3.2.1'
 
 
 }

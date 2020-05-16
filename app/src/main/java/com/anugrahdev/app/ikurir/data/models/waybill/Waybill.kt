@@ -5,27 +5,29 @@ import com.google.gson.annotations.SerializedName
 
 data class Waybill(
     @SerializedName("destination")
-    val destination: String,
+    val destination: String? = null,
     @SerializedName("origin")
-    val origin: String,
+    val origin: String? = null,
     @SerializedName("receiver_address")
-    val receiverAddress: String,
+    val receiverAddress: String? =null,
     @SerializedName("receiver_city")
-    val receiverCity: String,
+    val receiverCity: String? = null,
     @SerializedName("receiver_name")
-    val receiverName: String,
+    val receiverName: String? = null,
     @SerializedName("shipper_address")
-    val shipperAddress: String,
+    val shipperAddress: String? =null,
     @SerializedName("shipper_name")
-    val shipperName: String,
+    val shipperName: String? =null,
     @SerializedName("shipping_city")
-    val shippingCity: String,
+    val shippingCity: String? =null,
     @SerializedName("waybill_date")
-    val waybillDate: String,
+    val waybillDate: String? =null,
 //    @SerializedName("waybill_number")
 //    val waybillNumber: List<String>,
     @SerializedName("waybill_time")
-    val waybillTime: String,
+    val waybillTime: String? =null,
     @SerializedName("weight")
-    val weight: Int
-)
+    val weight: String? =null
+){
+    constructor() : this(null,null,null,null,null,null,null,null,null,null,null)
+}

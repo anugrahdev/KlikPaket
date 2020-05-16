@@ -1,17 +1,35 @@
 package com.anugrahdev.app.ikurir.data.models.waybill
 
 
-import com.google.gson.Gson
-import com.google.gson.annotations.SerializedName
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 
-data class WaybillData(
-    @SerializedName("courier")
-    val courier: Courier,
-    @SerializedName("delivery_status")
-    val deliveryStatus: DeliveryStatus,
-    val details: List<WaybillDetail>,
-    val waybill: Waybill
+const val waybill_number = " ";
+
+@Entity(primaryKeys = ["waybillNumber","type"])
+data class WaybillData constructor(
+    @Embedded(prefix = "courier_")
+    var courier: Courier,
+    @Embedded(prefix = "status_")
+    var delivery_status: DeliveryStatus,
+    @Embedded(prefix = "waybill_")
+    var waybill: Waybill,
+    @Ignore var details: List<WaybillDetail>
 
 
-)
+
+){
+    var waybillNumber: String = waybill_number
+    var type:String = "history"
+    var savedTime:String = ""
+
+    constructor():this(
+        Courier(null,null),
+        DeliveryStatus(null,null,null,null),
+        Waybill(null,null,null,null,null,null,null,null,null,null,null),
+        listOf(WaybillDetail(null,null,null,null,null))
+    )
+}
 

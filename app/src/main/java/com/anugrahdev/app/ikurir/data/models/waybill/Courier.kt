@@ -1,13 +1,12 @@
 package com.anugrahdev.app.ikurir.data.models.waybill
 
 
+import androidx.room.Ignore
 import com.google.gson.annotations.SerializedName
 
 data class Courier(
-    @SerializedName("code")
-    val code: String,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("service_code")
-    val serviceCode: String
-)
+    val code: String?=null,
+    val name: String?=null
+){
+    constructor() : this(null,null)
+}
