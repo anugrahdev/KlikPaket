@@ -11,7 +11,11 @@ class WaybillRepository (private val api:ApiService, private val db:AppDatabase)
 
     suspend fun upsert(waybillData: WaybillData) = db.getWaybillDao().upsert(waybillData)
 
-    fun getSavedWaybill() = db.getWaybillDao().getSavedWaybill("history")
+    fun getHistoryWaybill() = db.getWaybillDao().getHistoryWaybill()
+
+    fun getAllSavedWaybill() = db.getWaybillDao().getAllSavedWaybill()
+
+    fun getSavedWaybill(status:String) = db.getWaybillDao().getSavedWaybill(status)
 
     suspend fun deleteSavedWaybill(waybillData: WaybillData) = db.getWaybillDao().delete(waybillData)
 

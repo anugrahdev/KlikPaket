@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_layout"
     tools:context=".ui.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,22 +80,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/et_search"
+            android:id="@+id/et_waybill"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/edittext"
             android:lines="1"
+            android:hint="Waybill Number"
             android:maxLines="1"
             android:singleLine="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:layout_constraintEnd_toStartOf="@+id/iv_scan"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/iv_scan"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_gravity="center|end"
@@ -218,52 +220,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2">
+
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_myshipment"
                 android:layout_width="0dp"
                 android:layout_height="180dp"
                 android:layout_weight="1"
                 android:layout_marginRight="12dp"
-                app:cardBackgroundColor="@color/colorPrimaryDark"
-                app:cardCornerRadius="13dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_wave_4"
-                    android:scaleType="fitXY"/>
-
-
-                <View
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/layout_circle"/>
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_signs"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/poppinsbold"
-                    android:layout_marginTop="135dp"
-                    android:layout_gravity="center_horizontal"
-                    android:textAlignment="center"
-                    android:text="Ekspedisi Terdekat"/>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_weight="1"
                 app:cardBackgroundColor="@color/colorPrimaryDark"
                 app:cardCornerRadius="13dp">
 
@@ -298,7 +262,48 @@
                     android:layout_marginTop="135dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
-                    android:text="Daftar Kiriman"/>
+                    android:text="Kiriman Tersimpan"/>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="13dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_wave_4"
+                    android:scaleType="fitXY"/>
+
+
+                <View
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/layout_circle"/>
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_settings"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppinsbold"
+                    android:layout_marginTop="135dp"
+                    android:layout_gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:text="Pengaturan"/>
 
             </com.google.android.material.card.MaterialCardView>
 

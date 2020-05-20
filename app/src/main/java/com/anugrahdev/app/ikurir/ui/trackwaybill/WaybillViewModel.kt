@@ -12,7 +12,7 @@ import com.anugrahdev.app.ikurir.utils.ApiException
 import com.anugrahdev.app.ikurir.utils.anyException
 import kotlinx.coroutines.launch
 
-class TrackWaybillViewModel(private val repository: WaybillRepository) : ViewModel(){
+class WaybillViewModel(private val repository: WaybillRepository) : ViewModel(){
 
     private val TAG = "TrackWaybillViewModel"
 
@@ -34,7 +34,11 @@ class TrackWaybillViewModel(private val repository: WaybillRepository) : ViewMod
         repository.upsert(waybillData)
     }
 
-    fun getSavedWaybill() = repository.getSavedWaybill()
+    fun getHisotrywaybill() = repository.getHistoryWaybill()
+
+    fun getAllSavedWaybill() = repository.getAllSavedWaybill()
+
+    fun getSavedWaybill(status:String) = repository.getSavedWaybill(status)
 
     fun deleteSavedWaybill(waybillData: WaybillData) = viewModelScope.launch {
         repository.deleteSavedWaybill(waybillData)

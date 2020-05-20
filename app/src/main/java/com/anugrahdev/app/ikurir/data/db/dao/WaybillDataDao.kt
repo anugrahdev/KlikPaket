@@ -13,7 +13,13 @@ interface WaybillDataDao {
     @Delete
     suspend fun delete(waybilldata: WaybillData)
 
-    @Query("SELECT * FROM WaybillData WHERE type==:type")
-    fun getSavedWaybill(type:String): LiveData<List<WaybillData>>
+    @Query("SELECT * FROM WaybillData WHERE type=='history'")
+    fun getHistoryWaybill(): LiveData<List<WaybillData>>
+
+    @Query("SELECT * FROM WaybillData WHERE type=='saved' AND status_status==:status")
+    fun getSavedWaybill(status:String): LiveData<List<WaybillData>>
+
+    @Query("SELECT * FROM WaybillData WHERE type=='saved'")
+    fun getAllSavedWaybill(): LiveData<List<WaybillData>>
 
 }

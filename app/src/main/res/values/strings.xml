@@ -1,18 +1,26 @@
 <resources>
-    <string name="app_name">iKurir</string>
+    <string name="app_name" translatable="false">iKurir</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="ongkir">Ongkos Kirim</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="ongkir">Shipping Cost</string>
     <string name="origin">Origin</string>
     <string name="destination">Destination</string>
     <string name="weight">Weight</string>
-    <string name="kota_kabupaten">Kota/Kabupaten</string>
-    <string name="kecamatan">Kecamatan</string>
+    <string name="kota_kabupaten">City</string>
+    <string name="kecamatan">District</string>
     <string name="courier">Courier</string>
-    <string name="hitungongkir">Hitung Ongkir</string>
-    <string name="lacak_kiriman">Lacak Kiriman</string>
-    <string name="pipe_separator"> | </string>
+    <string name="hitungongkir">Calculate Cost</string>
+    <string name="lacak_kiriman">Tracking Package</string>
+    <string name="pipe_separator" translatable="false"> | </string>
+    <string name="package_name">Package Name :</string>
+    <string name="save">SAVE</string>
+    <string name="saveawbdialogtitle">Save this airwaybill number ?</string>
+    <string name="saveawbdialogmessage">Enter airwaybill name :</string>
+    <string name="cancel">CANCEL</string>
+    <string name="history">History:</string>
+    <string name="deleteawbdialogtitle">Remove Confirmation</string>
+    <string name="deleteawbdialogmessage">Are you sure want to remove this airwaybill from Saved List ?</string>
 
     <string-array name="kurir">
         <item>Semua</item>

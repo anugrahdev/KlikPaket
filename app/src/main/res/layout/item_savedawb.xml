@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:padding="14dp"
             android:orientation="vertical">
-
+            
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,18 +37,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AWB Number :"
+                        android:text="@string/package_name"
                         android:textSize="12sp"
                         android:fontFamily="@font/poppinsmed"/>
                     <TextView
-                        android:id="@+id/tv_waybill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{waybill.waybillNumber}"
-                        tools:text="1234567890"
+                        tools:text="Kemeja Flannel UNIQLO"
+                        android:text="@{waybill.waybillName}"
                         android:fontFamily="@font/poppinsbold"
                         android:textColor="@color/black"/>
-
+                   
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,14 +80,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Delivery Status :"
+                        android:text="AWB Number :"
                         android:textSize="12sp"
                         android:fontFamily="@font/poppinsmed"/>
                     <TextView
-                        android:id="@+id/tv_delivery_status"
+                        android:id="@+id/tv_waybill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{waybill.delivery_status.status}"
+                        android:text="@{waybill.waybillNumber}"
                         tools:text="1234567890"
                         android:fontFamily="@font/poppinsbold"
                         android:textColor="@color/black"/>

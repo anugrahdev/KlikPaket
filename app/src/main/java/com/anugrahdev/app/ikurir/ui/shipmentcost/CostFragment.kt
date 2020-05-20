@@ -1,5 +1,6 @@
 package com.anugrahdev.app.ikurir.ui.shipmentcost
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,11 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anugrahdev.app.ikurir.R
 import com.anugrahdev.app.ikurir.adapter.CostAdapter
+import com.anugrahdev.app.ikurir.ui.MainActivity
 import com.anugrahdev.app.ikurir.utils.hide
 import com.anugrahdev.app.ikurir.utils.show
 import com.anugrahdev.app.ikurir.utils.snackbar
@@ -56,6 +59,7 @@ class CostFragment : Fragment(),KodeinAware {
         processWeight()
         processCalculateCost()
 
+        ic_back.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_costFragment_to_homeFragment, null))
 
 
     }
@@ -75,7 +79,7 @@ class CostFragment : Fragment(),KodeinAware {
             if (cityId!=0 && districtId !=0 && weight!=0){
                 startLoading()
                 var courier = spinner_courier.selectedItem.toString()
-                if (courier=="Semua") { courier = "jne,jnt,sicepat,tiki,lion,alfatrex,pcp,sap" }
+                if (courier=="Semua") { courier = "jne,jnt,ic_sicepat,tiki,lion,alfatrex,pcp,sap" }
                 viewModel.postShippingCost(cityId, districtId, weight*1000, courier.toLowerCase())
             }else{
                 constraintLayout.snackbar("Semua form harus di isi !")

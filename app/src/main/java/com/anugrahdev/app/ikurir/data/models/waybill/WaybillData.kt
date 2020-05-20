@@ -24,6 +24,7 @@ data class WaybillData constructor(
     var waybillNumber: String = waybill_number
     var type:String = "history"
     var savedTime:String = ""
+    var waybillName = ""
 
     constructor():this(
         Courier(null,null),

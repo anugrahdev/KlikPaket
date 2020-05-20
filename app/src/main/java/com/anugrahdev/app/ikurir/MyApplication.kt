@@ -6,7 +6,7 @@ import com.anugrahdev.app.ikurir.data.network.ApiService
 import com.anugrahdev.app.ikurir.data.repositories.CostRepository
 import com.anugrahdev.app.ikurir.data.repositories.WaybillRepository
 import com.anugrahdev.app.ikurir.ui.shipmentcost.CostViewModelFactory
-import com.anugrahdev.app.ikurir.ui.trackwaybill.TrackWaybillViewModelFactory
+import com.anugrahdev.app.ikurir.ui.trackwaybill.WaybillViewModelFactory
 import com.jakewharton.threetenabp.AndroidThreeTen
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -24,7 +24,7 @@ class MyApplication: Application(), KodeinAware {
         bind() from singleton { CostRepository(instance()) }
         bind() from singleton { WaybillRepository(instance(),instance()) }
         bind() from provider { CostViewModelFactory(instance()) }
-        bind() from provider { TrackWaybillViewModelFactory(instance()) }
+        bind() from provider { WaybillViewModelFactory(instance()) }
 
     }
 

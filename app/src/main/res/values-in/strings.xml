@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ongkir">Ongkos Kirim</string>
+    <string name="origin">Asal</string>
+    <string name="destination">Tujuan</string>
+    <string name="weight">Berat</string>
+    <string name="kota_kabupaten">Kota/Kabupaten</string>
+    <string name="kecamatan">Kecamatan</string>
+    <string name="courier">Kurir</string>
+    <string name="hitungongkir">Hitung Ongkir</string>
+    <string name="lacak_kiriman">Lacak Kiriman</string>
+    <string name="package_name">Nama Paket :</string>
+    <string name="save">SIMPAN</string>
+    <string name="saveawbdialogtitle">Simpan Resi Ini ?</string>
+    <string name="saveawbdialogmessage">Masukkan nama resi :</string>
+    <string name="cancel">BATAL</string>
+    <string name="history">Riwayat Pencarian:</string>
+    <string name="deleteawbdialogtitle">Konfirmasi Penghapusan</string>
+    <string name="deleteawbdialogmessage">Yakin ingin menghapus resi ini dari daftar resi tersimpan ?</string>
+</resources>
