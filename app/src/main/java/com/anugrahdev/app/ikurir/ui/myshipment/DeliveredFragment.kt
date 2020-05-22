@@ -54,10 +54,10 @@ class DeliveredFragment : Fragment(), KodeinAware {
             adapter = historyitemAdapter.also {
                 it.setOnItemClickListener{ wbData ->
                     MaterialAlertDialogBuilder(requireContext())
-                        .setTitle("Lacak Resi Ini?")
+                        .setTitle(getString(R.string.track_this))
                         .setIcon(R.drawable.ic_parcel)
                         .setMessage(wbData.waybillNumber)
-                        .setPositiveButton("YA"){ dialog, which ->
+                        .setPositiveButton("YES"){ dialog, which ->
                             val bundle = Bundle().apply {
                                 putString("waybillNumber", wbData.waybillNumber)
                                 putString("courier", wbData.courier.code)
@@ -76,8 +76,10 @@ class DeliveredFragment : Fragment(), KodeinAware {
 
     private fun getDeliveredShipment(){
         viewModel.getSavedWaybill("DELIVERED").observe(viewLifecycleOwner, Observer {
+            if  (it.isEmpty()){
+                cv_notfound.visibility = View.VISIBLE
+            }
             recycler_view_delivered.apply {
-//
                 val sortedHistory = it.sortedByDescending { sortBy->
                     sortBy.savedTime
                 }
@@ -100,10 +102,21 @@ class DeliveredFragment : Fragment(), KodeinAware {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val waybill = historyitemAdapter.differ.currentList[position]
-                viewModel.deleteSavedWaybill(waybill)
+                if (waybill.history){
+                    waybill.saved = false
+                    viewModel.updateWaybill(waybill)
+
+                }else if(!waybill.history){
+                    viewModel.deleteSavedWaybill(waybill)
+                }
                 view?.rootView?.let { Snackbar.make(it, "Successfully remove waybill data", Snackbar.LENGTH_LONG).apply {
                     setAction("Undo"){
-                        viewModel.saveWaybill(waybill)
+                        if (!waybill.history){
+                            viewModel.saveWaybill(waybill)
+                        }else{
+                            waybill.saved = true
+                            viewModel.updateWaybill(waybill)
+                        }
                     }.show()
                 } }
             }

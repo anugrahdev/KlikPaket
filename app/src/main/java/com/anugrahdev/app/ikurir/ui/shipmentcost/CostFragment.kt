@@ -50,7 +50,7 @@ class CostFragment : Fragment(),KodeinAware {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this,factory).get(CostViewModel::class.java)
         weight = et_weight.text.toString().toInt()
-
+        spinner_courier.setTitle("Select Courier")
         val loadingstyle: Sprite = WanderingCubes()
         spin_kit_progress_bar.setIndeterminateDrawable(loadingstyle)
         reset()
@@ -74,6 +74,7 @@ class CostFragment : Fragment(),KodeinAware {
     }
 
     private fun processCalculateCost() {
+
         btn_calculate_cost.setOnClickListener {
             startLoading()
             if (cityId!=0 && districtId !=0 && weight!=0){

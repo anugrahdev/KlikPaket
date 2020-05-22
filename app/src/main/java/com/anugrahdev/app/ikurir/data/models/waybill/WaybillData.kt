@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 
 const val waybill_number = " ";
 
-@Entity(primaryKeys = ["waybillNumber","type"])
+@Entity(primaryKeys = ["waybillNumber"])
 data class WaybillData constructor(
     @Embedded(prefix = "courier_")
     var courier: Courier,
@@ -22,7 +22,9 @@ data class WaybillData constructor(
 
 ){
     var waybillNumber: String = waybill_number
-    var type:String = "history"
+    var history:Boolean = true
+    var saved:Boolean = false
+    var trackTime:String = ""
     var savedTime:String = ""
     var waybillName = ""
 

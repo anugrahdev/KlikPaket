@@ -107,6 +107,7 @@
                         android:inputType="text"
                         android:maxLines="1"
                         android:paddingStart="12dp"
+                        android:paddingEnd="3dp"
                         android:singleLine="true" />
 
                 </LinearLayout>
@@ -134,6 +135,7 @@
                         android:inputType="text"
                         android:maxLines="1"
                         android:paddingStart="12dp"
+                        android:paddingEnd="3dp"
                         android:singleLine="true" />
 
                 </LinearLayout>

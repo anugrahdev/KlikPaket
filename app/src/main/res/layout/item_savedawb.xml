@@ -80,7 +80,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AWB Number :"
+                        android:text="@string/awb_number"
                         android:textSize="12sp"
                         android:fontFamily="@font/poppinsmed"/>
                     <TextView
@@ -130,7 +130,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date of Shipment"
+                    android:text="@string/date_of_shipment"
                     android:textSize="12sp"
                     android:fontFamily="@font/poppinsmed"/>
                 <LinearLayout
@@ -172,7 +172,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="From"
+                            android:text="@string/from"
                             android:textSize="12sp"
                             android:fontFamily="@font/poppinsmed"/>
                         <TextView
@@ -199,7 +199,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
-                            android:text="To"
+                            android:text="@string/to"
                             android:textSize="12sp"
                             android:fontFamily="@font/poppinsmed"/>
                         <TextView

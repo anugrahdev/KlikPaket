@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="130dp"
             android:scaleType="fitXY"
@@ -26,26 +27,51 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="25dp"
-            android:fontFamily="@font/poppinsmed"
-            android:text="Hello"
-            android:textColor="#fefefe"
-            android:textSize="28sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvDate"
+            android:layout_width="176.5dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="28dp"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="3.5dp"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/tv_greet">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/ic_access_time"
+                    android:tint="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/imgDate"
+                    android:text="Minggu, 20 Oktober 2020"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/tv_greet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="53dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="@font/poppinsbold"
-            android:text="Selamat Pagi"
+            android:text="KlikPaket"
             android:textColor="#ffffff"
             android:textSize="32sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +112,7 @@
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/edittext"
             android:lines="1"
-            android:hint="Waybill Number"
+            android:hint="@string/awb_number"
             android:maxLines="1"
             android:singleLine="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -158,13 +184,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/poppinsbold"
                     android:layout_marginTop="135dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
-                    android:text="Cek Ongkir"/>
+                    android:text="@string/shipping_cost"/>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -201,13 +227,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/poppinsbold"
                     android:layout_marginTop="135dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
-                    android:text="Lacak Kiriman"/>
+                    android:text="@string/track_shipment"/>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -256,17 +282,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/poppinsbold"
                     android:layout_marginTop="135dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
-                    android:text="Kiriman Tersimpan"/>
+                    android:text="@string/mysaved_shipment"/>
 
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cv_"
+                android:id="@+id/cv_setting"
                 android:layout_width="0dp"
                 android:layout_height="180dp"
                 android:layout_weight="1"
@@ -297,13 +323,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/poppinsbold"
                     android:layout_marginTop="135dp"
                     android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
-                    android:text="Pengaturan"/>
+                    android:text="@string/setting"/>
 
             </com.google.android.material.card.MaterialCardView>
 

@@ -1,26 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">iKurir</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="ongkir">Shipping Cost</string>
-    <string name="origin">Origin</string>
-    <string name="destination">Destination</string>
-    <string name="weight">Weight</string>
-    <string name="kota_kabupaten">City</string>
-    <string name="kecamatan">District</string>
-    <string name="courier">Courier</string>
-    <string name="hitungongkir">Calculate Cost</string>
-    <string name="lacak_kiriman">Tracking Package</string>
-    <string name="pipe_separator" translatable="false"> | </string>
-    <string name="package_name">Package Name :</string>
-    <string name="save">SAVE</string>
-    <string name="saveawbdialogtitle">Save this airwaybill number ?</string>
-    <string name="saveawbdialogmessage">Enter airwaybill name :</string>
-    <string name="cancel">CANCEL</string>
-    <string name="history">History:</string>
-    <string name="deleteawbdialogtitle">Remove Confirmation</string>
-    <string name="deleteawbdialogmessage">Are you sure want to remove this airwaybill from Saved List ?</string>
+    <string name="app_name" translatable="false">KlikPaket</string>
 
     <string-array name="kurir">
         <item>Semua</item>
@@ -40,5 +19,72 @@
         <item>TIKI (Titipan Kilat) </item>
         <item>Lion Parcel</item>
     </string-array>
+
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="pipe_separator" translatable="false"> | </string>
+    <string name="cancel">BATAL</string>
+    <string name="general">Umum</string>
+    <string name="ongkir">Ongkos Kirim</string>
+    <string name="origin">Asal</string>
+    <string name="destination">Tujuan</string>
+    <string name="weight">Kota/Kabupaten</string>
+    <string name="kota_kabupaten">Kota/Kabupaten</string>
+    <string name="kecamatan">Kecamatan</string>
+    <string name="courier">Kurir</string>
+    <string name="hitungongkir">Hitung Ongkir</string>
+    <string name="lacak_kiriman">Lacak Kiriman</string>
+    <string name="package_name">Nama Paket :</string>
+    <string name="save">SIMPAN</string>
+    <string name="saveawbdialogtitle">Simpan Resi Ini ?</string>
+    <string name="saveawbdialogmessage">Masukkan nama resi :</string>
+    <string name="history">Riwayat Pencarian:</string>
+    <string name="deleteawbdialogtitle">Konfirmasi Penghapusan</string>
+    <string name="deleteawbdialogmessage">Yakin ingin menghapus resi ini dari daftar resi tersimpan ?</string>
+    <string name="setting">Pengaturan</string>
+    <string name="information">Informasi</string>
+    <string name="about_description">KlikPaket hadir untuk membantu kebutuhan anda dalam bisnis online atau sekedar kebutuhan pribadi untuk pengeekan biaya ongkos kirim dan pelacakan posisi paket yang sedang dikirimkan hanya dengan beberapa kali klik di smartphone anda.</string>
+    <string name="jne_name" translatable="false">Jalur Nugraha Ekakurir (JNE)</string>
+    <string name="jne_website" translatable="false">https://www.jne.co.id/</string>
+    <string name="jnt_name" translatable="false"><![CDATA[J&T Express]]></string>
+    <string name="jnt_website" translatable="false">https://www.jet.co.id/</string>
+    <string name="sicepat_name" translatable="false">SiCepat Ekspres Indonesia</string>
+    <string name="sicepat_website" translatable="false">http://sicepat.com/</string>
+    <string name="tiki_website" translatable="false">https://tiki.id/</string>
+    <string name="tiki_name" translatable="false">Citra Van Titipan Kilat (TIKI)</string>
+    <string name="lion_name" translatable="false">Lion Parcel</string>
+    <string name="lion_website" translatable="false">http://web.lionparcel.com/</string>
+    <string name="alfatrex_website" translatable="false">https://www.alfatrex.id/</string>
+    <string name="alfatrex_name" translatable="false">Alfatrex</string>
+    <string name="pcp_name" translatable="false">PCP Express</string>
+    <string name="pcp_website" translatable="false">http://www.pcpexpress.com/</string>
+    <string name="sap_name" translatable="false">SAP Express</string>
+    <string name="sap_website" translatable="false">https://www.sap-express.id/</string>
+    <string name="shipping_cost">Cek Ongkir</string>
+    <string name="mysaved_shipment">Paket Saya</string>
+    <string name="track_shipment">Lacak Kiriman</string>
+    <string name="all">Semua</string>
+    <string name="courier_info_text">Sumber dan website ekspedisi untuk informasi lebih lanjut</string>
+    <string name="courier_info">Info Ekspedisi</string>
+    <string name="about_text">Informasi tentang aplikasi</string>
+    <string name="about">Tentang Aplikasi</string>
+    <string name="clear_history_text">Hapus semua riwayat pencarian resi pada perangkat ini</string>
+    <string name="clear_history">Bersihkan Riwayat Pencarian</string>
+    <string name="daftar_kiriman">Daftar Kiriman</string>
+    <string name="delivery_status">Status Kiriman</string>
+    <string name="detail" translatable="false">DETAIL</string>
+    <string name="waybill_number">Nomor Resi</string>
+    <string name="track">LACAK</string>
+    <string name="awb_number">Nomor Resi</string>
+    <string name="date_of_shipment">Tanggal Kiriman</string>
+    <string name="from">Dari</string>
+    <string name="to">Untuk</string>
+    <string name="service" translatable="false">Service</string>
+    <string name="paket_telah_diterima_oleh">"Package "</string>
+    <string name="awbnotfound">Resi Tidak Ditemukan</string>
+    <string name="delete_history_success">Berhasil Menghapus Riwayat</string>
+    <string name="track_this">Lacak Resi Ini ?</string>
+    <string name="empty_shipment">Daftar kiriman masih kosong, simpan kiriman di menu lacak paket untuk menambahkan</string>
+    <string name="mulai_pencarian">Masukkan nomor resi dan pilih ekspedisi atau lakukan scan barcode pada lembar resi untuk mulai melacak kiriman.</string>
+
 
 </resources>

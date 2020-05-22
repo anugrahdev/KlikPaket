@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.transition.AutoTransition
 import android.transition.TransitionManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ import com.anugrahdev.app.ikurir.databinding.TrackwaybillFragmentBinding
 import com.anugrahdev.app.ikurir.utils.hide
 import com.anugrahdev.app.ikurir.utils.show
 import com.anugrahdev.app.ikurir.utils.snackbar
+import com.anugrahdev.app.ikurir.utils.toast
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.Wave
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -37,6 +39,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.integration.android.IntentIntegrator
 import com.varunest.sparkbutton.SparkEventListener
 import kotlinx.android.synthetic.main.trackwaybill_fragment.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -90,9 +96,11 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
             waybill=args.waybillNumber
             courier=args.courier
             et_waybill.setText(waybill)
+            courierSelector(waybill!!)
             trackWaybill(waybill!!, courier!!)
         }else if(args.waybillNumber!=null){
             et_waybill.setText(args.waybillNumber)
+            courierSelector(args.waybillNumber!!)
         }
 
         trackWaybillProcess()
@@ -114,15 +122,16 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
             adapter = historyitemAdapter.also {
                 it.setOnItemClickListener{ wbData ->
                     MaterialAlertDialogBuilder(requireContext())
-                        .setTitle("Lacak Resi Ini?")
+                        .setTitle(getString(R.string.track_this))
                         .setIcon(R.drawable.ic_parcel)
                         .setMessage(wbData.waybillNumber)
-                        .setPositiveButton("YA"){ dialog, which ->
+                        .setPositiveButton("YES"){ dialog, which ->
                             startLoading()
                             layout_nestedscroll.fullScroll(View.FOCUS_UP)
                             layout_nestedscroll.smoothScrollTo(0,0)
-                            et_waybill.setText(wbData.waybillNumber)
                             waybill = wbData.waybillNumber
+                            et_waybill.setText(waybill)
+                            courierSelector(waybill!!)
                             trackWaybill(waybill!!, wbData.courier.code!!)
                         }
                         .setNegativeButton("CANCEL"){dialog, which ->
@@ -138,10 +147,13 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
         viewModel.getHisotrywaybill().observe(viewLifecycleOwner, Observer {
             if  (it.isEmpty()){
                 layout_history.visibility = View.GONE
+                cv_historyisempty.visibility = View.VISIBLE
+            }else{
+                cv_historyisempty.visibility = View.GONE
             }
             recycler_view_history.apply {
                 val sortedHistory = it.sortedByDescending { sortBy->
-                    sortBy.savedTime
+                    sortBy.trackTime
                 }
                 historyitemAdapter.differ.submitList(sortedHistory)
             }
@@ -162,10 +174,20 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val waybill = historyitemAdapter.differ.currentList[position]
-                viewModel.deleteSavedWaybill(waybill)
-                view?.rootView?.let { Snackbar.make(it, "Successfully Delete History", Snackbar.LENGTH_LONG).apply {
+                if(waybill.history && !waybill.saved!!){
+                    viewModel.deleteSavedWaybill(waybill)
+                }else{
+                    waybill.history = false
+                    viewModel.updateWaybill(waybill)
+                }
+                view?.rootView?.let { Snackbar.make(it, getString(R.string.delete_history_success), Snackbar.LENGTH_LONG).apply {
                     setAction("Undo"){
-                        viewModel.saveWaybill(waybill)
+                        if (waybill.saved!!){
+                            waybill.history = true
+                            viewModel.updateWaybill(waybill)
+                        }else{
+                            viewModel.saveWaybill(waybill)
+                        }
                     }.show()
                 } }
             }
@@ -187,14 +209,28 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
 
         viewModel.waybilldata.observe(viewLifecycleOwner, Observer {waybilldata->
             if (waybilldata == null){
-                root_layout.snackbar("Resi Tidak Ditemukan")
+                root_layout.snackbar(getString(R.string.awbnotfound))
                 stopLoading()
             }else{
-                waybilldata.waybillNumber = waybill!!
-                waybilldata.savedTime = LocalDateTime.now().toString()
-                viewModel.saveWaybill(waybilldata)
                 binding.waybill = waybilldata
                 binding.tvWaybill.text = waybill
+                waybilldata.waybillNumber = waybill!!
+                CoroutineScope(Dispatchers.IO).launch {
+                    if (viewModel.getSearchWaybill(waybilldata.waybillNumber) == true){
+                        withContext(Dispatchers.Main){
+                            btn_save.setChecked(true)
+                        }
+                        viewModel.updateSaveData(LocalDateTime.now().toString(), waybilldata.delivery_status.status.toString(), true, waybill!!)
+                    }else{
+                        withContext(Dispatchers.Main){
+                            btn_save.setChecked(false)
+                        }
+                        waybilldata.trackTime = LocalDateTime.now().toString()
+                        viewModel.saveWaybill(waybilldata)
+
+                    }
+                }
+
 
                 recycler_view_waybill.apply {
                     layoutManager = LinearLayoutManager(requireContext())
@@ -208,50 +244,30 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
                 }
 
                 if (args.waybillNumber!=null && args.courier!=null){
-                    waybilldata.type="saved"
+                    waybilldata.saved=true
+                    waybilldata.trackTime = LocalDateTime.now().toString()
+                    waybilldata.savedTime = LocalDateTime.now().toString()
                     waybilldata.waybillName = args.waybillName!!
-                    viewModel.saveWaybill(waybilldata)
-                }
-
-
-                btn_savewaybill.setOnClickListener {view->
-                    MaterialDialog(requireContext()).show {
-                        title(R.string.saveawbdialogtitle)
-                        message(R.string.saveawbdialogmessage)
-                        input(allowEmpty = false) { dialog, text ->
-                            val inputField: EditText = dialog.getInputField()
-                            inputField.setBackgroundResource(R.drawable.edittext)
-                            inputField.setBackgroundColor(Color.WHITE)
-                            inputField.height = 50
-                            waybilldata.type="saved"
-                            waybilldata.waybillName=text.toString()
-                        }
-                        positiveButton {dialog->
-                            viewModel.saveWaybill(waybilldata)
-                            activity?.root_layout?.snackbar("Resi berhasil disimpan")
-                        }
-                        positiveButton(R.string.save)
-                        negativeButton(R.string.cancel)
-                        icon(R.drawable.ic_box)
-                    }
-                }
-
-                if (waybilldata.type=="saved"){
-                    btn_save.setChecked(true)
-                }else{
-                    btn_save.setChecked(false)
+                    viewModel.updateWaybill(waybilldata)
                 }
 
                 btn_save.setOnClickListener {
                     if(btn_save.isChecked){
                         MaterialDialog(requireContext()).show {
                             title(R.string.deleteawbdialogtitle)
-                            message(R.string.saveawbdialogmessage)
+                            message(R.string.deleteawbdialogmessage)
                             positiveButton {
-                                viewModel.deleteSavedWaybill(waybilldata)
+                                if (waybilldata.history){
+                                    waybilldata.saved = false
+                                    viewModel.updateWaybill(waybilldata)
+                                }else if(!waybilldata.history && !waybilldata.saved!!){
+                                    viewModel.deleteSavedWaybill(waybilldata)
+                                }
                                 activity?.btn_save?.playAnimation()
                                 activity?.btn_save?.setChecked(false);
                             }
+                            negativeButton(R.string.cancel)
+
                         }
                     }else{
                         MaterialDialog(requireContext()).show {
@@ -262,11 +278,13 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
                                 inputField.setBackgroundResource(R.drawable.edittext)
                                 inputField.setBackgroundColor(Color.WHITE)
                                 inputField.height = 50
-                                waybilldata.type="saved"
+
                                 waybilldata.waybillName=text.toString()
                             }
                             positiveButton {dialog->
-                                viewModel.saveWaybill(waybilldata)
+                                waybilldata.saved=true
+                                waybilldata.savedTime = LocalDateTime.now().toString()
+                                viewModel.updateWaybill(waybilldata)
                                 activity?.btn_save?.playAnimation()
                                 activity?.btn_save?.setChecked(true);
                             }
@@ -304,6 +322,18 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
 
     }
 
+    private fun courierSelector(Waybill: String){
+        if(Waybill.length == 16){
+            spinner_courier_waybill.setSelection(0)
+        }else if(Waybill.take(3).equals("000")){
+            spinner_courier_waybill.setSelection(2)
+        }else if(Waybill.take(1).equals("J") && Waybill.length<16){
+            spinner_courier_waybill.setSelection(1)
+        }else if(Waybill.length == 12){
+            spinner_courier_waybill.setSelection(3)
+        }
+    }
+
     private fun initScanner(){
         val integrator = IntentIntegrator.forSupportFragment(this)
         integrator.setOrientationLocked(false)
@@ -318,6 +348,7 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
                 root_layout.snackbar("Cancelled")
             }else{
                 et_waybill.setText(result.contents.toString())
+                courierSelector(result.contents.toString())
             }
         }else{
             super.onActivityResult(requestCode, resultCode, data)

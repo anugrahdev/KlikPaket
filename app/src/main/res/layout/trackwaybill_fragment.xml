@@ -111,7 +111,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:paddingLeft="6dp"
-                        android:hint="Waybill Number"
+                        android:hint="@string/waybill_number"
                         app:layout_constraintEnd_toStartOf="@+id/btn_scan"
                         app:layout_constraintStart_toEndOf="@+id/imageView2"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -148,7 +148,7 @@
                             android:layout_width="0dp"
                             android:layout_height="45dp"
                             android:layout_weight="2"
-                            android:text="SEARCH"/>
+                            android:text="@string/track"/>
                     </LinearLayout>
 
 
@@ -184,50 +184,42 @@
                                 android:layout_height="wrap_content"
                                 android:weightSum="5"
                                 android:orientation="horizontal">
+
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="3"
+                                    android:layout_weight="4"
                                     android:orientation="vertical">
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Date of Shipment"
+                                        android:text="@string/delivery_status"
                                         android:textSize="12sp"
                                         android:fontFamily="@font/poppinsmed"/>
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
+                                    <TextView
+                                        android:id="@+id/tv_delivery_status"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            tools:text="24-01-2019 | "
-                                            android:text="@{waybill.waybill.waybillDate+` | `}"
-                                            android:fontFamily="@font/poppinsbold"
-                                            android:textColor="@color/black"/>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            tools:text="09.30 AM"
-                                            android:text="@{waybill.waybill.waybillTime}"
-                                            android:fontFamily="@font/poppinsbold"
-                                            android:textColor="@color/black"/>
-
-                                    </LinearLayout>
+                                        android:layout_gravity="center_vertical"
+                                        android:textColor="@color/black"
+                                        android:text="@{waybill.delivery_status.status}"
+                                        android:fontFamily="@font/poppinsbold"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:text="On Process" />
                                 </LinearLayout>
+
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/layout_save"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2">
+                                    android:layout_weight="1">
 
                                     <com.varunest.sparkbutton.SparkButton
                                         android:id="@+id/btn_save"
                                         android:layout_width="50dp"
-                                        android:layout_height="50dp"
+                                        android:layout_height="47dp"
                                         app:sparkbutton_activeImage="@drawable/ic_saved"
                                         app:sparkbutton_inActiveImage="@drawable/ic_save"
                                         app:sparkbutton_iconSize="32dp"
@@ -243,7 +235,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="AWB Number"
+                                android:text="@string/awb_number"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/poppinsmed"/>
                             <TextView
@@ -253,6 +245,34 @@
                                 tools:text="PLMGI00071973320"
                                 android:fontFamily="@font/poppinsbold"
                                 android:textColor="@color/black"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/date_of_shipment"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppinsmed"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="24-01-2019 | "
+                                    android:text="@{waybill.waybill.waybillDate+` | `}"
+                                    android:fontFamily="@font/poppinsbold"
+                                    android:textColor="@color/black"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="09.30 AM"
+                                    android:text="@{waybill.waybill.waybillTime}"
+                                    android:fontFamily="@font/poppinsbold"
+                                    android:textColor="@color/black"/>
+
+                            </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -269,7 +289,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="6dp"
-                                        android:text="From"
+                                        android:text="@string/from"
                                         android:textSize="12sp"
                                         android:fontFamily="@font/poppinsmed"/>
                                     <TextView
@@ -296,7 +316,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="6dp"
-                                        android:text="To"
+                                        android:text="@string/to"
                                         android:textSize="12sp"
                                         android:fontFamily="@font/poppinsmed"/>
                                     <TextView
@@ -322,7 +342,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
-                                android:text="Service"
+                                android:text="@string/service"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/poppinsmed"/>
                             <TextView
@@ -333,20 +353,7 @@
                                 android:fontFamily="@font/poppinsbold"
                                 android:textColor="@color/black"/>
 
-                            <TextView
-                                android:id="@+id/tv_delivery_status"
-                                android:padding="4.5dp"
-                                android:layout_width="98dp"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:gravity="center"
-                                android:textColor="@color/white"
-                                android:text="@{waybill.delivery_status.status}"
-                                android:fontFamily="@font/poppinsbold"
-                                android:background="@{waybill.delivery_status.status.equals(`DELIVERED`) ? @drawable/bg_green_rounded : @drawable/btn_rounded }"                                        app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:text="On Process" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -379,7 +386,7 @@
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppinsmed"
                                     android:layout_marginLeft="12dp"
-                                    android:text="Paket telah diterima oleh: "/>
+                                    android:text="@string/paket_telah_diterima_oleh"/>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -429,15 +436,8 @@
                                 android:id="@+id/expandBtn"
                                 android:layout_width="100dp"
                                 android:layout_height="40dp"
-                                android:text="DETAIL"
+                                android:text="@string/detail"
                                 android:textColor="#fff" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btn_savewaybill"
-                                android:layout_width="100dp"
-                                android:layout_height="40dp"
-                                android:layout_marginLeft="10dp"
-                                android:text="SAVE"/>
 
                         </LinearLayout>
 
@@ -445,8 +445,8 @@
 
                 </androidx.cardview.widget.CardView>
 
+
                 <LinearLayout
-                    android:id="@+id/layout_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -454,8 +454,42 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cv_trackwaybill">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cv_historyisempty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:visibility="gone"
+                        android:layout_marginHorizontal="5.5dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="2.8dp"
+                        app:cardUseCompatPadding="true">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="6dp"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="125dp"
+                                android:src="@drawable/ic_parcel"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/mulai_pencarian"
+                                android:fontFamily="@font/poppinsmed"
+                                android:textSize="18sp"
+                                android:textAlignment="center"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
 
                     <LinearLayout
+                        android:id="@+id/layout_history"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="24dp"
@@ -475,6 +509,8 @@
                             android:background="@color/colorPrimary"/>
 
                     </LinearLayout>
+
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_view_history"
                         android:layout_width="match_parent"
@@ -492,7 +528,7 @@
                     android:layout_gravity="center"
                     android:elevation="5dp"
                     android:visibility="invisible"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="120dp"
                     app:SpinKit_Color="@color/colorAccent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

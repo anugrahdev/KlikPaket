@@ -19,7 +19,16 @@ class WaybillRepository (private val api:ApiService, private val db:AppDatabase)
 
     suspend fun deleteSavedWaybill(waybillData: WaybillData) = db.getWaybillDao().delete(waybillData)
 
+    suspend fun update(waybillData: WaybillData) = db.getWaybillDao().update(waybillData)
 
+    fun getSearchWaybill(waybillNumber:String) = db.getWaybillDao().getSearchWaybill(waybillNumber)
+
+    fun getSearchWaybillData(waybillNumber:String) = db.getWaybillDao().getSearchWaybillData(waybillNumber)
+
+    suspend fun updateSaved(trackTime:String, status:String, saved:Boolean, waybillNumber: String)
+            = db.getWaybillDao().updateSaved(trackTime, status, saved, waybillNumber)
+
+    suspend fun clearHistory() = db.getWaybillDao().clearHistory()
 
 
 }

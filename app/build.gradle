@@ -104,9 +104,15 @@ dependencies {
     implementation 'com.jakewharton.threetenabp:threetenabp:1.0.3'
 
     //Material dialog
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
     implementation 'com.afollestad.material-dialogs:input:3.3.0'
+
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+
 
     implementation 'com.karumi:dexter:6.1.2'
     implementation 'com.github.varunest:sparkbutton:1.0.6'
+    debugImplementation 'com.idescout.sql:sqlscout-server:4.1'
+    releaseImplementation 'com.idescout.sql:sqlscout-server-noop:4.1'
 
 }

@@ -38,11 +38,24 @@ class WaybillViewModel(private val repository: WaybillRepository) : ViewModel(){
 
     fun getAllSavedWaybill() = repository.getAllSavedWaybill()
 
+    fun getSearchWaybill(waybillNumber:String) = repository.getSearchWaybill(waybillNumber)
+
     fun getSavedWaybill(status:String) = repository.getSavedWaybill(status)
 
     fun deleteSavedWaybill(waybillData: WaybillData) = viewModelScope.launch {
         repository.deleteSavedWaybill(waybillData)
     }
 
+    fun updateWaybill(waybillData: WaybillData) = viewModelScope.launch {
+        repository.update(waybillData)
+    }
+
+    fun updateSaveData(trackTime:String, status:String, saved:Boolean, waybillNumber: String) = viewModelScope.launch {
+        repository.updateSaved(trackTime,status, saved, waybillNumber)
+    }
+
+    fun clearHistory() = viewModelScope.launch {
+        repository.clearHistory()
+    }
 
 }
