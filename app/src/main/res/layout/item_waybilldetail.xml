@@ -3,7 +3,7 @@
     <data>
         <variable
             name="waybildetail"
-            type="com.anugrahdev.app.ikurir.data.models.waybill.WaybillDetail" />
+            type="com.anugrahdev.app.klikPaket.data.models.waybill.WaybillDetail" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             app:markerSize="20dp"
             app:lineWidth="2dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             app:startLineColor="@color/colorPrimary"
             app:endLineColor="@color/colorPrimary"/>
         <LinearLayout
@@ -56,14 +56,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:includeFontPadding="false"
-                    android:text="@{waybildetail.shippingDate}"
+                    android:text="@{waybildetail.shippingDate +` | `}"
                     tools:text="2020-03-25"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:includeFontPadding="false"
-                    android:text=" | "/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

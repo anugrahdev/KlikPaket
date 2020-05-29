@@ -21,7 +21,7 @@
     </string-array>
 
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="pipe_separator" translatable="false"> | </string>
+    <string name="pipe_separator" translatable="false">  |  </string>
     <string name="cancel">BATAL</string>
     <string name="general">Umum</string>
     <string name="ongkir">Ongkos Kirim</string>
@@ -85,6 +85,9 @@
     <string name="track_this">Lacak Resi Ini ?</string>
     <string name="empty_shipment">Daftar kiriman masih kosong, simpan kiriman di menu lacak paket untuk menambahkan</string>
     <string name="mulai_pencarian">Masukkan nomor resi dan pilih ekspedisi atau lakukan scan barcode pada lembar resi untuk mulai melacak kiriman.</string>
+    <string name="collapsetext" translatable="false">LESS</string>
+    <string name="expandtext" translatable="false">DETAIL</string>
+    <string name="language">Bahasa</string>
 
 
 </resources>

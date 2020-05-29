@@ -6,7 +6,7 @@
         <import type="android.view.View"/>
         <variable
             name="waybill"
-            type="com.anugrahdev.app.ikurir.data.models.waybill.WaybillData" />
+            type="com.anugrahdev.app.klikPaket.data.models.waybill.WaybillData" />
     </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -46,7 +46,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <ImageView
                         android:id="@+id/ic_back"
@@ -57,7 +58,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/textView3"
                         app:layout_constraintHorizontal_bias="0.25"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/textView3"

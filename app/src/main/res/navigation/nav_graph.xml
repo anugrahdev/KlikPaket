@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.anugrahdev.app.ikurir.ui.home.HomeFragment"
+        android:name="com.anugrahdev.app.klikPaket.ui.home.HomeFragment"
         android:label="Home">
         <action
             android:id="@+id/action_homeFragment_to_costFragment"
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/costFragment"
-        android:name="com.anugrahdev.app.ikurir.ui.shipmentcost.CostFragment"
+        android:name="com.anugrahdev.app.klikPaket.ui.shipmentcost.CostFragment"
         android:label="Shipping Cost"
         tools:layout="@layout/cost_fragment" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/trackWaybillFragment"
-        android:name="com.anugrahdev.app.ikurir.ui.trackwaybill.TrackWaybillFragment"
+        android:name="com.anugrahdev.app.klikPaket.ui.trackwaybill.TrackWaybillFragment"
         android:label="Track Waybill" >
         <argument
             android:name="waybillNumber"
@@ -83,7 +83,7 @@
     </fragment>
     <fragment
         android:id="@+id/myShipmentFragment"
-        android:name="com.anugrahdev.app.ikurir.ui.myshipment.MyShipmentFragment"
+        android:name="com.anugrahdev.app.klikPaket.ui.myshipment.MyShipmentFragment"
         android:label="My Shipment"
         tools:layout="@layout/myshipment_fragment" >
         <action
@@ -105,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.anugrahdev.app.ikurir.ui.settings.SettingFragment"
+        android:name="com.anugrahdev.app.klikPaket.ui.settings.SettingFragment"
         android:label="SettingFragment" >
         <action
             android:id="@+id/action_settingFragment_to_homeFragment"

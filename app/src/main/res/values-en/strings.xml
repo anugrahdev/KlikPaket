@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="ongkir">Shipping Cost</string>
     <string name="origin">Origin</string>
     <string name="destination">Destination</string>
@@ -12,7 +12,7 @@
     <string name="package_name">Package Name :</string>
     <string name="saveawbdialogtitle">Save this airwaybill number ?</string>
     <string name="saveawbdialogmessage">Enter airwaybill name :</string>
-    <string name="cancel">CANCEL</string>
+    <string name="cancel" tools:ignore="ButtonCase">CANCEL</string>
     <string name="history">History:</string>
     <string name="deleteawbdialogtitle">Remove Confirmation</string>
     <string name="deleteawbdialogmessage">Are you sure want to remove this airwaybill ?</string>
@@ -45,4 +45,5 @@
     <string name="empty_shipment">The shipment list is still empty, save the shipment in the package track menu to add</string>
     <string name="mulai_pencarian">Enter the airwaybill number and select the expedition or scan the barcode on the receipt sheet to start tracking the shipment.</string>
     <string name="save">SAVE</string>
+    <string name="language">Language</string>
 </resources>
