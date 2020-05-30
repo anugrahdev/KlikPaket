@@ -10,19 +10,11 @@ import com.anugrahdev.app.klikPaket.data.network.SafeApiRequest
 class CostRepository(private val api:ApiService):
     SafeApiRequest() {
 
-    suspend fun getCities(query: String):Resource<List<CitiesResult>>{
-        val response= apiRequest { api.getCities(query) }
-        return Resource.Success(response.data.results)
-    }
+    suspend fun getCities(query: String) =  apiRequest { api.getCities(query) }
 
-    suspend fun getDistricts(query: String):Resource<List<DistrictsResult>>{
-        val response = apiRequest { api.getDistricts(query) }
-        return Resource.Success(response.data.results)
-    }
+    suspend fun getDistricts(query: String) =  apiRequest { api.getDistricts(query) }
 
-    suspend fun postShippingCosts(originId:Int, destId:Int, weight:Int, courier:String):Resource<List<ShippingCostResult>>{
-        val response = apiRequest { api.postShippingCost(originId,destId,weight,courier) }
-        return Resource.Success(response.data.results)
-    }
+    suspend fun postShippingCosts(originId:Int, destId:Int, weight:Int, courier:String)
+            = apiRequest { api.postShippingCost(originId,destId,weight,courier) }
 
 }

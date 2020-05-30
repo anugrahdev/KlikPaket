@@ -21,7 +21,7 @@ class WaybillViewModel(private val repository: WaybillRepository) : ViewModel(){
         _waybillData.postValue(Resource.Loading())
         try{
             val response = repository.postWaybill(waybill, courier)
-            _waybillData.postValue(response)
+            _waybillData.postValue(Resource.Success(response.data))
         }catch (e: NoConnectivityException) {
             _waybillData.postValue(Resource.Error(e.message))
         } catch (e: ApiException){

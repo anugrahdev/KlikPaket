@@ -9,10 +9,7 @@ import com.anugrahdev.app.klikPaket.data.network.SafeApiRequest
 class WaybillRepository (private val api:ApiService, private val db:AppDatabase):
     SafeApiRequest(){
 
-    suspend fun postWaybill(waybill:String,courier:String): Resource<WaybillData>{
-        val response = apiRequest { api.postWaybill(waybill, courier) }
-        return Resource.Success(response.data)
-    }
+    suspend fun postWaybill(waybill:String,courier:String) = apiRequest { api.postWaybill(waybill, courier) }
 
     suspend fun upsert(waybillData: WaybillData) = db.getWaybillDao().upsert(waybillData)
 
