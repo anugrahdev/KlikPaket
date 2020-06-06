@@ -1,7 +1,7 @@
 # KlikPaket
 Android application with MVVM architectural pattern and Jetpack for tracking and calculate shipment cost with indonesian expedition services
 <p align="center">
-<img src="https://i.ibb.co/3MgnDx0/mock.png" height="500px" width="730px"/> 
+<img src="https://i.ibb.co/3MgnDx0/mock.png" height="560px" width="730px"/> 
  </p>
 **Tech Stack :**
 
