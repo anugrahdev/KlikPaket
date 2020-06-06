@@ -17,11 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         prefs = PreferenceProvider(this)
         setContentView(R.layout.main_activity)
-        when(prefs.getLanguage()){
-            "Bahasa Indonesia" -> lang="id"
-            "English" -> lang="en"
-        }
-        setAppLocale(lang)
+        setAppLocale(prefs.getLanguage()!!)
 
 
     }

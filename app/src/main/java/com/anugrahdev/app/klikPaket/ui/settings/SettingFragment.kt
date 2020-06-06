@@ -1,5 +1,6 @@
 package com.anugrahdev.app.klikPaket.ui.settings
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.afollestad.materialdialogs.list.listItemsSingleChoice
 
 import com.anugrahdev.app.klikPaket.R
 import com.anugrahdev.app.klikPaket.preferences.PreferenceProvider
+import com.anugrahdev.app.klikPaket.ui.AboutActivity
 import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModel
 import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModelFactory
 import com.anugrahdev.app.klikPaket.utils.snackbar
@@ -44,18 +46,19 @@ class SettingFragment : Fragment() , KodeinAware {
 
         val languageList = listOf("Bahasa Indonesia", "English")
         prefs = PreferenceProvider(requireContext())
-        tv_selectedLanguage.setText(prefs.getLanguage())
+        tv_selectedLanguage.setText(convertCountryCode(prefs.getLanguage().toString()))
         setting_language.setOnClickListener {
             MaterialDialog(requireContext()).show {
                 var init = 0
                 for (i in languageList.indices){
-                    if (languageList[i] == prefs.getLanguage()){
+                    if (convertCountryCode(languageList[i]) == prefs.getLanguage()){
                         init = i
                     }
                 }
                 listItemsSingleChoice(items = languageList, initialSelection = init){ _, index, _ ->
-                    activity?.tv_selectedLanguage?.setText(languageList[index])
-                    prefs.setLanguage(languageList[index])
+                    var lang = convertCountryCode(languageList[index])
+                    activity?.tv_selectedLanguage?.setText(lang)
+                    prefs.setLanguage(lang)
                     activity?.recreate()
                 }
             }
@@ -74,8 +77,8 @@ class SettingFragment : Fragment() , KodeinAware {
         }
 
         setting_about.setOnClickListener {
-            MaterialDialog(requireContext()).show {
-                customView(R.layout.layout_about)
+            Intent(requireContext(), AboutActivity::class.java).also{
+                startActivity(it)
             }
         }
 
@@ -88,6 +91,16 @@ class SettingFragment : Fragment() , KodeinAware {
 
     }
 
+    private fun convertCountryCode(key: String): String{
+        var lang=""
+        when(key){
+            "Bahasa Indonesia" -> lang="id"
+            "English" -> lang="en"
+            "en" -> lang="English"
+            "id" -> lang="Bahasa Indonesia"
+        }
+        return lang
+    }
 
 
 }
