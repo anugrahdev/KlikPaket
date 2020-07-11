@@ -2,7 +2,6 @@ package com.anugrahdev.app.klikPaket.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -13,23 +12,19 @@ import androidx.navigation.fragment.findNavController
 import com.anugrahdev.app.klikPaket.R
 import com.anugrahdev.app.klikPaket.adapter.SliderAdapter
 import com.anugrahdev.app.klikPaket.data.models.Slider
-import com.anugrahdev.app.klikPaket.preferences.PreferenceProvider
-import com.anugrahdev.app.klikPaket.utils.Utils
+import com.anugrahdev.app.klikPaket.preferences.SettingsPref
+import com.anugrahdev.app.klikPaket.utils.dateFormat
 import com.anugrahdev.app.klikPaket.utils.snackbar
 import com.google.zxing.integration.android.IntentIntegrator
 import com.smarteist.autoimageslider.IndicatorAnimations
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.home_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
-import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
-import timber.log.Timber
-import java.util.*
 
-class HomeFragment : Fragment() , KodeinAware {
-    override val kodein by kodein()
-    private val prefs: PreferenceProvider by instance<PreferenceProvider>()
+@AndroidEntryPoint
+class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +40,7 @@ class HomeFragment : Fragment() , KodeinAware {
             initScanner()
         }
 
-        tvDate.setText(Utils.DateFormat(LocalDateTime.now().toString(),prefs.getLanguage().toString()))
+        tvDate.setText(dateFormat(LocalDateTime.now().toString(),SettingsPref.language))
         val sliderList = listOf(
             Slider(R.drawable.ic_slidertwo), Slider(R.drawable.ic_sliderone), Slider(R.drawable.banner))
         val sliderAdapter by lazy{ SliderAdapter(sliderList) }

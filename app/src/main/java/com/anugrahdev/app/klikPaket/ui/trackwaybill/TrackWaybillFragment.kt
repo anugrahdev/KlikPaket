@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -35,6 +36,7 @@ import com.github.ybq.android.spinkit.style.Wave
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.integration.android.IntentIntegrator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.trackwaybill_fragment.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,18 +48,16 @@ import org.kodein.di.generic.instance
 import org.threeten.bp.LocalDateTime
 import java.util.*
 
+@AndroidEntryPoint
+class TrackWaybillFragment : Fragment() {
 
-class TrackWaybillFragment : Fragment(),KodeinAware {
-
-    override val kodein by kodein()
-    private val factory: WaybillViewModelFactory by instance<WaybillViewModelFactory>()
     private lateinit var binding: TrackwaybillFragmentBinding
+    private val viewModel: WaybillViewModel by viewModels()
     var waybill:String?=null
     var courier:String?=null
     private val args:TrackWaybillFragmentArgs by navArgs()
     lateinit var historyitemAdapter:WaybillAdapter
 
-    private lateinit var viewModel: WaybillViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,7 +69,6 @@ class TrackWaybillFragment : Fragment(),KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this,factory).get(WaybillViewModel::class.java)
         val loadingStyle: Sprite = Wave()
         spin_kit_progress_bar.setIndeterminateDrawable(loadingStyle)
         setupHistoryRecyclerView()

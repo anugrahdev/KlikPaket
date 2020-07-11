@@ -6,18 +6,16 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatActivity
 import com.anugrahdev.app.klikPaket.R
-import com.anugrahdev.app.klikPaket.preferences.PreferenceProvider
+import com.anugrahdev.app.klikPaket.preferences.SettingsPref
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var prefs: PreferenceProvider
-    var lang:String="id"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        prefs = PreferenceProvider(this)
         setContentView(R.layout.main_activity)
-        setAppLocale(prefs.getLanguage()!!)
+        setAppLocale(SettingsPref.language)
 
 
     }

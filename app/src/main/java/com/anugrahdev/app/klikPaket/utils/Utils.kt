@@ -9,22 +9,29 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-object Utils {
 
-
-
-    fun DateFormat(oldstringDate: String, locale: String): String? {
-        val newDate: String?
-        val dateFormat =
-            SimpleDateFormat("E, d MMMM yyyy", Locale(locale))
-        newDate = try {
-            val date: Date? = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(oldstringDate)
-            dateFormat.format(date!!)
-        } catch (e: ParseException) {
-            e.printStackTrace()
-            oldstringDate
-        }
-        return newDate
+@SuppressLint("SimpleDateFormat")
+fun dateFormat(oldstringDate: String, locale: String): String? {
+    val newDate: String?
+    val dateFormat =
+        SimpleDateFormat("E, d MMMM yyyy", Locale(locale))
+    newDate = try {
+        val date: Date? = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(oldstringDate)
+        dateFormat.format(date!!)
+    } catch (e: ParseException) {
+        e.printStackTrace()
+        oldstringDate
     }
+    return newDate
+}
 
+fun convertCountryCode(key: String): String{
+    var lang=""
+    when(key){
+        "Bahasa Indonesia" -> lang="id"
+        "English" -> lang="en"
+        "en" -> lang="English"
+        "id" -> lang="Bahasa Indonesia"
+    }
+    return lang
 }

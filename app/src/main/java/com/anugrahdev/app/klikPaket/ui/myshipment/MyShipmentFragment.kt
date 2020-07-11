@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 
@@ -13,17 +14,14 @@ import com.anugrahdev.app.klikPaket.adapter.MyPagerAdapter
 import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModel
 import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.myshipment_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class MyShipmentFragment : Fragment(), KodeinAware {
-
-    override val kodein by kodein()
-    private val factory: WaybillViewModelFactory by instance<WaybillViewModelFactory>()
-
-    private lateinit var viewModel: WaybillViewModel
+@AndroidEntryPoint
+class MyShipmentFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +32,6 @@ class MyShipmentFragment : Fragment(), KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this,factory).get(WaybillViewModel::class.java)
 
         view_pager.adapter = MyPagerAdapter(this)
 

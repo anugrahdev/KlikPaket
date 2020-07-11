@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,19 +19,16 @@ import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModel
 import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.onprocess_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-/**
- * A simple [Fragment] subclass.
- */
-class OnProcessFragment : Fragment() , KodeinAware {
+@AndroidEntryPoint
+class OnProcessFragment : Fragment() {
 
-    override val kodein by kodein()
-    private val factory: WaybillViewModelFactory by instance<WaybillViewModelFactory>()
-    private lateinit var viewModel: WaybillViewModel
+    private val viewModel: WaybillViewModel by viewModels()
     lateinit var historyitemAdapter: MyShipmentAdapter
 
     override fun onCreateView(
@@ -46,7 +44,6 @@ class OnProcessFragment : Fragment() , KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this, factory).get(WaybillViewModel::class.java)
         setupRecyclerView()
         getOnProcessShipment()
 
