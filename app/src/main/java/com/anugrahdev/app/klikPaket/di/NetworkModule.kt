@@ -1,5 +1,6 @@
 package com.anugrahdev.app.klikPaket.di
 
+import android.content.Context
 import com.anugrahdev.app.klikPaket.data.network.ApiService
 import com.anugrahdev.app.klikPaket.data.network.NetworkInterceptor
 import com.anugrahdev.app.klikPaket.utils.Constant
@@ -9,6 +10,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,15 +24,16 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(): ApiService {
-        //Logging HTTP
+    fun provideApiService(
+        @ApplicationContext context: Context
+    ): ApiService {
         val logging = HttpLoggingInterceptor()
-        //Loging level just for debuggig
+        val networkInterceptor = NetworkInterceptor(context)
         logging.level = HttpLoggingInterceptor.Level.BODY
-
         val okHttpClient = OkHttpClient.Builder()
             .readTimeout(90, TimeUnit.SECONDS)
             .addInterceptor(logging)
+            .addInterceptor(networkInterceptor)
             .addNetworkInterceptor(StethoInterceptor())
             .connectTimeout(90, TimeUnit.SECONDS)
             .build()

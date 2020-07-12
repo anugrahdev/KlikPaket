@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
@@ -17,14 +16,10 @@ import com.anugrahdev.app.klikPaket.R
 import com.anugrahdev.app.klikPaket.preferences.SettingsPref
 import com.anugrahdev.app.klikPaket.ui.AboutActivity
 import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModel
-import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModelFactory
 import com.anugrahdev.app.klikPaket.utils.convertCountryCode
 import com.anugrahdev.app.klikPaket.utils.snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.setting_fragment.*
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
+import kotlinx.android.synthetic.main.fragment_setting.*
 
 @AndroidEntryPoint
 class SettingFragment : Fragment() {
@@ -37,7 +32,7 @@ class SettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.setting_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_setting, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

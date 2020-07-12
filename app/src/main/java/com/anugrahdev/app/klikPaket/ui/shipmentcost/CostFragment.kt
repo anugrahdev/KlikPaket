@@ -9,7 +9,6 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anugrahdev.app.klikPaket.R
@@ -21,11 +20,8 @@ import com.anugrahdev.app.klikPaket.utils.snackbar
 import com.github.ybq.android.spinkit.sprite.Sprite
 import com.github.ybq.android.spinkit.style.WanderingCubes
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.cost_fragment.*
+import kotlinx.android.synthetic.main.fragment_cost.*
 import kotlinx.coroutines.*
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
 import java.util.*
 
 
@@ -40,7 +36,7 @@ class CostFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.cost_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_cost, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -77,15 +73,17 @@ class CostFragment : Fragment(){
     private fun processCalculateCost() {
 
         btn_calculate_cost.setOnClickListener {
-            if (cityId != 0 && districtId != 0 && weight != 0) {
+            if (actv_origin.text.isNotEmpty() && actv_destination.text.isNotEmpty() && weight != 0) {
                 var courier = spinner_courier.selectedItem.toString()
                 if (courier == "Semua") {
                     courier = "jne,jnt,ic_sicepat,tiki,lion,alfatrex,pcp,sap"
                 }
                 viewModel.postShippingCost(cityId, districtId, weight * 1000,
                     courier.toLowerCase(Locale.ROOT))
-            } else {
-                constraintLayout.snackbar("Semua form harus di isi !")
+            } else if(cityId == 0 || districtId == 0) {
+                constraintLayout.snackbar(getString(R.string.input_selected))
+            }else{
+                constraintLayout.snackbar(getString(R.string.form_not_filled))
             }
         }
 
@@ -96,6 +94,9 @@ class CostFragment : Fragment(){
                         recycler_view_shippingcost.apply {
                             layoutManager = LinearLayoutManager(requireContext())
                             adapter = CostAdapter(data)
+                        }
+                        if(data.isEmpty()){
+                            constraintLayout.snackbar(getString(R.string.not_found))
                         }
                     }
                     stopLoading()
@@ -119,8 +120,8 @@ class CostFragment : Fragment(){
         var job: Job? = null
         actv_origin.addTextChangedListener { editable ->
             job?.cancel()
-            job = MainScope().launch {
-                delay(500)
+            job = CoroutineScope(Dispatchers.IO).launch {
+                delay(300)
                 editable?.let {
                     if (editable.toString().isNotEmpty()) {
                         viewModel.getCities(editable.toString())
@@ -171,8 +172,8 @@ class CostFragment : Fragment(){
         var job: Job? = null
         actv_destination.addTextChangedListener { editable ->
             job?.cancel()
-            job = MainScope().launch {
-                delay(500)
+            job = CoroutineScope(Dispatchers.IO).launch {
+                delay(300)
                 editable?.let {
                     if (editable.toString().isNotEmpty()) {
                         viewModel.getDistricts(editable.toString())

@@ -32,7 +32,7 @@
     <string name="clear_history">Clear Searching History</string>
     <string name="daftar_kiriman">Shipment List</string>
     <string name="waybill_number">Waybill Number</string>
-    <string name="track">TRACK</string>
+    <string name="track">Track</string>
     <string name="delivery_status">Delivery Status</string>
     <string name="awb_number">AWB Number</string>
     <string name="date_of_shipment">Date of Shipment</string>
@@ -46,4 +46,11 @@
     <string name="mulai_pencarian">Enter the airwaybill number and select the expedition or scan the barcode on the receipt sheet to start tracking the shipment.</string>
     <string name="save">SAVE</string>
     <string name="language">Language</string>
+    <string name="error_500">The service on the selected expedition is currently unavailable</string>
+    <string name="remove">Remove</string>
+    <string name="copy_airwaybill_number">Copy Airwaybill Number</string>
+    <string name="copy_airwaybill_response">The Airwaybill Number Has Been Copied Into A Clipboard</string>
+    <string name="form_not_filled">All forms must be filled!</string>
+    <string name="input_selected">No input selected yet!</string>
+    <string name="not_found">No results found!</string>
 </resources>

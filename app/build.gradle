@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -38,11 +40,7 @@ android {
     dataBinding {
         enabled = true
     }
-//
-//    configurations.all() {
-//        resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
-//        resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
-//    }
+
 
 
 }
@@ -137,6 +135,10 @@ dependencies {
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01'
     kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
     kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha01'
+
+    //Google firebase analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.4.4'
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
 
 
 }

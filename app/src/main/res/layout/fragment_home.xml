@@ -9,13 +9,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="12dp"
+        android:paddingBottom="@dimen/layout_padding"
         tools:context=".ui.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="@dimen/header_height"
             android:background="@drawable/layout_roundcorner"
             android:fitsSystemWindows="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,19 +25,18 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
-                android:layout_height="130dp"
+                android:layout_height="@dimen/wave_height"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_wave_1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvDate"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_marginStart="28dp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_28sdp"
                 app:cardCornerRadius="3.5dp"
                 app:cardElevation="5dp"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -75,12 +74,12 @@
                 android:id="@+id/tv_greet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="@dimen/_28sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:fontFamily="@font/poppinsbold"
-                android:text="KlikPaket"
+                android:text="@string/app_name"
                 android:textColor="#ffffff"
-                android:textSize="32sp"
+                android:textSize="@dimen/header_text_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,9 +90,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="130dp"
+            android:layout_height="@dimen/editText_height"
+            android:layout_marginHorizontal="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/content_margin_top"
             android:background="@drawable/layout_edittext"
             android:descendantFocusability="beforeDescendants"
             android:focusableInTouchMode="true"
@@ -106,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="@dimen/layout_margin"
                 android:src="@drawable/ic_search"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -116,7 +115,7 @@
                 android:id="@+id/et_waybill"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="@dimen/layout_margin"
                 android:background="@drawable/edittext"
                 android:hint="@string/awb_number"
                 android:lines="1"
@@ -130,10 +129,10 @@
 
             <ImageView
                 android:id="@+id/iv_scan"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
                 android:layout_gravity="center|end"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/layout_margin"
                 android:src="@drawable/ic_barcode"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,18 +145,17 @@
             android:id="@+id/imageSliderlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp"
+            android:layout_marginHorizontal="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
+                android:layout_height="@dimen/_120sdp"
                 android:background="@color/colorAccent"
                 app:sliderAutoCycleDirection="back_and_forth"
                 app:sliderAutoCycleEnabled="true"
@@ -177,8 +175,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageSliderlayout">
@@ -187,18 +185,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="@dimen/layout_margin"
                 android:weightSum="2">
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cv_cost"
                     android:layout_width="0dp"
-                    android:layout_height="180dp"
+                    android:layout_height="@dimen/home_card_height"
                     android:layout_weight="1"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="@dimen/layout_margin"
                     app:cardBackgroundColor="@color/colorPrimaryDark"
-                    app:cardCornerRadius="13dp">
+                    app:cardCornerRadius="@dimen/card_corner_radius">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_wave_4"
@@ -206,26 +204,26 @@
 
 
                     <View
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="@dimen/home_circle_size"
+                        android:layout_height="@dimen/home_circle_size"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/layout_circle"/>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="35dp"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/home_icon_size"
+                        android:layout_height="@dimen/home_icon_size"
+                        android:layout_marginTop="@dimen/_25sdp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/ic_ongkir"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_12ssp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/poppinsbold"
-                        android:layout_marginTop="135dp"
+                        android:layout_marginTop="@dimen/content_margin_top"
                         android:layout_gravity="center_horizontal"
                         android:textAlignment="center"
                         android:text="@string/shipping_cost"/>
@@ -235,12 +233,12 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cv_track"
                     android:layout_width="0dp"
-                    android:layout_height="180dp"
+                    android:layout_height="@dimen/home_card_height"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/colorPrimaryDark"
-                    app:cardCornerRadius="13dp">
+                    app:cardCornerRadius="@dimen/card_corner_radius">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_wave_4"
@@ -249,26 +247,26 @@
 
 
                     <View
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="@dimen/home_circle_size"
+                        android:layout_height="@dimen/home_circle_size"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/layout_circle"/>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="35dp"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/home_icon_size"
+                        android:layout_height="@dimen/home_icon_size"
+                        android:layout_marginTop="@dimen/_25sdp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/ic_parcel"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_12ssp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/poppinsbold"
-                        android:layout_marginTop="135dp"
+                        android:layout_marginTop="@dimen/content_margin_top"
                         android:layout_gravity="center_horizontal"
                         android:textAlignment="center"
                         android:text="@string/track_shipment"/>
@@ -288,14 +286,13 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cv_myshipment"
                     android:layout_width="0dp"
-                    android:layout_height="180dp"
+                    android:layout_height="@dimen/home_card_height"
                     android:layout_weight="1"
-                    android:layout_marginRight="12dp"
-
                     app:cardBackgroundColor="@color/colorPrimaryDark"
-                    app:cardCornerRadius="13dp">
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    android:layout_marginEnd="@dimen/layout_margin">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_wave_4"
@@ -304,26 +301,26 @@
 
 
                     <View
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="@dimen/home_circle_size"
+                        android:layout_height="@dimen/home_circle_size"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/layout_circle"/>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="35dp"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/home_icon_size"
+                        android:layout_height="@dimen/home_icon_size"
+                        android:layout_marginTop="@dimen/_25sdp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/ic_box"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_12ssp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/poppinsbold"
-                        android:layout_marginTop="135dp"
+                        android:layout_marginTop="@dimen/content_margin_top"
                         android:layout_gravity="center_horizontal"
                         android:textAlignment="center"
                         android:text="@string/mysaved_shipment"/>
@@ -332,12 +329,12 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cv_setting"
                     android:layout_width="0dp"
-                    android:layout_height="180dp"
+                    android:layout_height="@dimen/home_card_height"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/colorPrimaryDark"
-                    app:cardCornerRadius="13dp">
+                    app:cardCornerRadius="@dimen/card_corner_radius">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_wave_4"
@@ -345,26 +342,26 @@
 
 
                     <View
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="@dimen/home_circle_size"
+                        android:layout_height="@dimen/home_circle_size"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/layout_circle"/>
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="35dp"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/home_icon_size"
+                        android:layout_height="@dimen/home_icon_size"
+                        android:layout_marginTop="@dimen/_25sdp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/ic_settings"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_12ssp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/poppinsbold"
-                        android:layout_marginTop="135dp"
+                        android:layout_marginTop="@dimen/content_margin_top"
                         android:layout_gravity="center_horizontal"
                         android:textAlignment="center"
                         android:text="@string/setting"/>

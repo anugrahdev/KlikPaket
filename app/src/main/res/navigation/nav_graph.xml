@@ -41,7 +41,7 @@
         android:id="@+id/costFragment"
         android:name="com.anugrahdev.app.klikPaket.ui.shipmentcost.CostFragment"
         android:label="Shipping Cost"
-        tools:layout="@layout/cost_fragment" >
+        tools:layout="@layout/fragment_cost" >
         <action
             android:id="@+id/action_costFragment_to_homeFragment"
             app:destination="@id/homeFragment"
@@ -85,7 +85,7 @@
         android:id="@+id/myShipmentFragment"
         android:name="com.anugrahdev.app.klikPaket.ui.myshipment.MyShipmentFragment"
         android:label="My Shipment"
-        tools:layout="@layout/myshipment_fragment" >
+        tools:layout="@layout/fragment_myshipment" >
         <action
             android:id="@+id/action_myShipmentFragment_to_trackWaybillFragment"
             app:destination="@id/trackWaybillFragment"

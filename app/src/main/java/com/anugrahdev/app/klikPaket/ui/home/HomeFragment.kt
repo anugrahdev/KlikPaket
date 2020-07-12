@@ -15,12 +15,11 @@ import com.anugrahdev.app.klikPaket.data.models.Slider
 import com.anugrahdev.app.klikPaket.preferences.SettingsPref
 import com.anugrahdev.app.klikPaket.utils.dateFormat
 import com.anugrahdev.app.klikPaket.utils.snackbar
+import com.google.firebase.crashlytics.internal.common.CrashlyticsCore
 import com.google.zxing.integration.android.IntentIntegrator
 import com.smarteist.autoimageslider.IndicatorAnimations
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.home_fragment.*
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.threeten.bp.LocalDateTime
 
 @AndroidEntryPoint
@@ -30,7 +29,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.home_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

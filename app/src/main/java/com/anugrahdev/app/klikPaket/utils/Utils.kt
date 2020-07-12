@@ -1,6 +1,9 @@
 package com.anugrahdev.app.klikPaket.utils
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import org.ocpsoft.prettytime.PrettyTime
@@ -34,4 +37,10 @@ fun convertCountryCode(key: String): String{
         "id" -> lang="Bahasa Indonesia"
     }
     return lang
+}
+
+fun Context.copyToClipboard(text: CharSequence){
+    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clip = ClipData.newPlainText("label",text)
+    clipboard.setPrimaryClip(clip)
 }

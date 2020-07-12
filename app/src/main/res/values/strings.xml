@@ -73,7 +73,7 @@
     <string name="delivery_status">Status Kiriman</string>
     <string name="detail" translatable="false">DETAIL</string>
     <string name="waybill_number">Nomor Resi</string>
-    <string name="track">LACAK</string>
+    <string name="track">Lacak</string>
     <string name="awb_number">Nomor Resi</string>
     <string name="date_of_shipment">Tanggal Kiriman</string>
     <string name="from">Dari</string>
@@ -88,6 +88,18 @@
     <string name="collapsetext" translatable="false">LESS</string>
     <string name="expandtext" translatable="false">DETAIL</string>
     <string name="language">Bahasa</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="kg" translatable="false">Kg</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="error_500">Layanan pada ekspedisi yang dipilih sedang tidak tersedia</string>
+    <string name="remove">Hapus</string>
+    <string name="copy_airwaybill_number">Salin Nomor Resi</string>
+    <string name="copy_airwaybill_response">Nomor Resi Telah di Salin kedalam Clipboard</string>
+    <string name="form_not_filled">Semua form harus di isi !</string>
+    <string name="input_selected">Belum ada masukan yang dipilih !</string>
+    <string name="not_found">Hasil tidak ditemukan!</string>
+
 
 
 </resources>
