@@ -12,7 +12,7 @@ Android application with MVVM architectural pattern and Jetpack for tracking and
  5. LiveData
  6. Android Navigation Architecture
  7. Room Database
- 8. [KODEIN](https://kodein.org/di/) as Dependency Injection Lib
+ 8. Dagger Hilt as Dependency Injection Lib
  9. [Retrofit](https://square.github.io/retrofit/) as Networking Lib
  10. [Glide](https://github.com/bumptech/glide) as Image Loader
  11. [Timber](https://github.com/JakeWharton/timber) as Logger Lib
