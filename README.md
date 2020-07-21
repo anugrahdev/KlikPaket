@@ -18,7 +18,7 @@ Android application with MVVM architectural pattern and Jetpack for tracking and
  11. [Timber](https://github.com/JakeWharton/timber) as Logger Lib
  12. [Autoimageslider](https://github.com/smarteist/Android-Image-Slider) library
  13. [Stetho](http://facebook.github.io/stetho) for SQLite Inspection
- 14. API by [NewsAPI](https://newsapi.org/docs) 
+ 14. API by [RuangAPI](https://ruangapi.com/) 
  
  ### LICENCE
  ```groovy
