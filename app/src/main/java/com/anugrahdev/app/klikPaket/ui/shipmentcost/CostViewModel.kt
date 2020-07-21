@@ -1,5 +1,6 @@
 package com.anugrahdev.app.klikPaket.ui.shipmentcost
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,7 +13,7 @@ import com.anugrahdev.app.klikPaket.data.repositories.CostRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class CostViewModel(private val repository: CostRepository) : ViewModel() {
+class CostViewModel @ViewModelInject constructor(val repository: CostRepository) : ViewModel() {
 
     private val _cities = MutableLiveData<Resource<List<CitiesResult>>>()
     val cities: LiveData<Resource<List<CitiesResult>>> get() = _cities

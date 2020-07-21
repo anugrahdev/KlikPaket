@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_height">@dimen/_135sdp</dimen>
+    <dimen name="wave_height">@dimen/_100sdp</dimen>
+    <dimen name="layout_margin">@dimen/_12sdp</dimen>
+    <dimen name="layout_padding">@dimen/_12sdp</dimen>
+    <dimen name="layout_label_padding">@dimen/_6sdp</dimen>
+    <dimen name="content_margin_top">@dimen/_110sdp</dimen>
+    <dimen name="btn_back_height">@dimen/_35sdp</dimen>
+    <dimen name="btn_back_width">@dimen/_42sdp</dimen>
+    <dimen name="header_text_size">@dimen/_22ssp</dimen>
+    <dimen name="card_corner_radius">@dimen/_15sdp</dimen>
+    <dimen name="editText_height">@dimen/_40sdp</dimen>
+    <dimen name="margin_header_title">@dimen/_12sdp</dimen>
+
+    <dimen name="home_card_height">@dimen/_140sdp</dimen>
+    <dimen name="home_circle_size">@dimen/_90sdp</dimen>
+    <dimen name="home_icon_size">@dimen/_65sdp</dimen>
+
+    <dimen name="label_text_size">@dimen/_10ssp</dimen>
+    <dimen name="content_text_size">@dimen/_12ssp</dimen>
+</resources>

@@ -48,28 +48,4 @@ interface ApiService {
 
     ): Response<WaybillResponse>
 
-
-
-
-    companion object {
-        operator fun invoke(connectivityInterceptor: NetworkInterceptor) : ApiService{
-
-            val okHttpClient = OkHttpClient.Builder()
-                .addInterceptor(connectivityInterceptor)
-                .connectTimeout(1, TimeUnit.MINUTES) // connect timeout
-                .writeTimeout(1, TimeUnit.MINUTES) // write timeout
-                .readTimeout(1, TimeUnit.MINUTES) // read timeout
-                .build()
-
-            return Retrofit.Builder()
-                .client(okHttpClient)
-                .baseUrl(base_url)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(ApiService::class.java)
-
-
-        }
-    }
-
 }

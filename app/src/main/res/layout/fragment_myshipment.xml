@@ -30,48 +30,45 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
+                    android:layout_height="@dimen/header_height"
                     android:background="@drawable/layout_roundcorner"
                     android:fitsSystemWindows="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageView4"
                         android:layout_width="wrap_content"
-                        android:layout_height="130dp"
+                        android:layout_height="@dimen/wave_height"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_wave_1"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ic_back"
-                        android:layout_width="42dp"
-                        android:layout_height="38dp"
-                        android:layout_marginTop="28dp"
+                        android:layout_width="@dimen/btn_back_width"
+                        android:layout_height="@dimen/btn_back_height"
+                        android:layout_marginTop="@dimen/margin_header_title"
+                        android:layout_marginStart="@dimen/_8sdp"
                         android:src="@drawable/ic_arrow_back"
                         app:layout_constraintEnd_toStartOf="@+id/textView3"
                         app:layout_constraintHorizontal_bias="0.25"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="ContentDescription" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="@dimen/margin_header_title"
                         android:fontFamily="@font/poppinsmed"
                         android:text="@string/daftar_kiriman"
                         android:textColor="#fefefe"
-                        android:textSize="28sp"
+                        android:textSize="@dimen/header_text_size"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,9 +78,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout2"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="130dp"
+                    android:layout_height="@dimen/editText_height"
+                    android:layout_marginHorizontal="@dimen/layout_margin"
+                    android:layout_marginTop="@dimen/content_margin_top"
                     android:background="@drawable/layout_edittext"
                     android:descendantFocusability="beforeDescendants"
                     android:focusableInTouchMode="true"
@@ -95,10 +92,10 @@
                         android:id="@+id/tab_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:layout_marginHorizontal="@dimen/layout_margin"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:tabTextAppearance="@style/customfontstyle" />
@@ -109,9 +106,8 @@
                     android:id="@+id/view_pager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/layout_margin"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 

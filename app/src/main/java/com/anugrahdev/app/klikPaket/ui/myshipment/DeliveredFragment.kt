@@ -5,27 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anugrahdev.app.klikPaket.R
 import com.anugrahdev.app.klikPaket.adapter.MyShipmentAdapter
+import com.anugrahdev.app.klikPaket.data.models.waybill.WaybillData
 import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModel
-import com.anugrahdev.app.klikPaket.ui.trackwaybill.WaybillViewModelFactory
+import com.anugrahdev.app.klikPaket.utils.copyToClipboard
+import com.anugrahdev.app.klikPaket.utils.snackbar
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.delivered_fragment.*
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.kodein
-import org.kodein.di.generic.instance
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_delivered.*
+import kotlinx.android.synthetic.main.fragment_trackwaybill.*
+import kotlinx.android.synthetic.main.layout_waybill_bottom_sheet.*
 
-class DeliveredFragment : Fragment(), KodeinAware {
-    override val kodein by kodein()
-    private val factory: WaybillViewModelFactory by instance<WaybillViewModelFactory>()
-    private lateinit var viewModel: WaybillViewModel
+@AndroidEntryPoint
+class DeliveredFragment : Fragment() {
+
+    private val viewModel: WaybillViewModel by viewModels()
     lateinit var historyitemAdapter: MyShipmentAdapter
 
     override fun onCreateView(
@@ -33,7 +36,7 @@ class DeliveredFragment : Fragment(), KodeinAware {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.delivered_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_delivered, container, false)
 
 
     }
@@ -41,45 +44,94 @@ class DeliveredFragment : Fragment(), KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this, factory).get(WaybillViewModel::class.java)
         setupRecyclerView()
         getDeliveredShipment()
 
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         historyitemAdapter = MyShipmentAdapter()
         recycler_view_delivered.apply {
             adapter = historyitemAdapter.also {
-                it.setOnItemClickListener{ wbData ->
-                    MaterialAlertDialogBuilder(requireContext())
-                        .setTitle(getString(R.string.track_this))
-                        .setIcon(R.drawable.ic_parcel)
-                        .setMessage(wbData.waybillNumber)
-                        .setPositiveButton("YES"){ _, _ ->
-                            val bundle = Bundle().apply {
-                                putString("waybillNumber", wbData.waybillNumber)
-                                putString("courier", wbData.courier.code)
-                                putString("waybillName", wbData.waybillName)
-                            }
-                            findNavController().navigate(R.id.action_myShipmentFragment_to_trackWaybillFragment,bundle)
-                        }
-                        .setNegativeButton("CANCEL"){ _, _ ->
-                        }
-                        .show()
+                it.setOnItemClickListener { wbData ->
+                    setupBottomSheetDialog(wbData)
                 }
             }
             layoutManager = LinearLayoutManager(activity)
         }
     }
 
-    private fun getDeliveredShipment(){
+    private fun setupBottomSheetDialog(wbData: WaybillData) {
+        val bottomSheet =
+            layoutInflater.inflate(R.layout.layout_waybill_bottom_sheet, null)
+        BottomSheetDialog(requireContext()).also { bottomSheetDialog ->
+            bottomSheetDialog.setContentView(bottomSheet)
+            bottomSheetDialog.dismissWithAnimation = true
+            bottomSheetDialog.tv_bs_courier.text = wbData.courier.name
+            bottomSheetDialog.tv_bs_airwaybill.text = wbData.waybillNumber
+            bottomSheetDialog.ll_bs_track.setOnClickListener {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(getString(R.string.track_this))
+                    .setIcon(R.drawable.ic_parcel)
+                    .setMessage("${wbData.courier.name} - ${wbData.waybillNumber}")
+                    .setPositiveButton("YES") { _, _ ->
+                        val bundle = Bundle().apply {
+                            putString("waybillNumber", wbData.waybillNumber)
+                            putString("courier", wbData.courier.code)
+                            putString("waybillName", wbData.waybillName)
+                        }
+                        findNavController().navigate(
+                            R.id.action_myShipmentFragment_to_trackWaybillFragment,
+                            bundle
+                        )
+                    }
+                    .setNegativeButton("CANCEL") { _, _ ->
+                    }
+                    .show()
+                bottomSheetDialog.dismiss()
+            }
+            bottomSheetDialog.ll_bs_copy.setOnClickListener {
+                requireContext().copyToClipboard(wbData.waybillNumber)
+                root_layout.snackbar(
+                    getString(R.string.copy_airwaybill_response)
+                )
+            }
+            bottomSheetDialog.ll_bs_remove.setOnClickListener {
+                if (wbData.history) {
+                    wbData.saved = false
+                    viewModel.updateWaybill(wbData)
+
+                } else if (!wbData.history) {
+                    viewModel.deleteSavedWaybill(wbData)
+                }
+                view?.rootView?.let {
+                    Snackbar.make(it, "Successfully remove waybill data", Snackbar.LENGTH_LONG)
+                        .apply {
+                            setAction("Undo") {
+                                if (!wbData.history) {
+                                    viewModel.saveWaybill(wbData)
+                                } else {
+                                    wbData.saved = true
+                                    viewModel.updateWaybill(wbData)
+                                }
+                                cv_notfound.visibility = View.GONE
+
+                            }.show()
+                        }
+                }
+                bottomSheetDialog.dismiss()
+            }
+            bottomSheetDialog.show()
+        }
+    }
+
+    private fun getDeliveredShipment() {
         viewModel.getSavedWaybill("DELIVERED").observe(viewLifecycleOwner, Observer {
-            if  (it.isEmpty()){
+            if (it.isEmpty()) {
                 cv_notfound.visibility = View.VISIBLE
             }
             recycler_view_delivered.apply {
-                val sortedHistory = it.sortedByDescending { sortBy->
+                val sortedHistory = it.sortedByDescending { sortBy ->
                     sortBy.savedTime
                 }
                 historyitemAdapter.differ.submitList(sortedHistory)
@@ -89,7 +141,7 @@ class DeliveredFragment : Fragment(), KodeinAware {
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        ){
+        ) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -100,24 +152,29 @@ class DeliveredFragment : Fragment(), KodeinAware {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val waybill = historyitemAdapter.differ.currentList[position]
-                if (waybill.history){
-                    waybill.saved = false
-                    viewModel.updateWaybill(waybill)
+                val wbData = historyitemAdapter.differ.currentList[position]
+                if (wbData.history) {
+                    wbData.saved = false
+                    viewModel.updateWaybill(wbData)
 
-                }else if(!waybill.history){
-                    viewModel.deleteSavedWaybill(waybill)
+                } else if (!wbData.history) {
+                    viewModel.deleteSavedWaybill(wbData)
                 }
-                view?.rootView?.let { Snackbar.make(it, "Successfully remove waybill data", Snackbar.LENGTH_LONG).apply {
-                    setAction("Undo"){
-                        if (!waybill.history){
-                            viewModel.saveWaybill(waybill)
-                        }else{
-                            waybill.saved = true
-                            viewModel.updateWaybill(waybill)
+                view?.rootView?.let {
+                    Snackbar.make(it, "Successfully remove waybill data", Snackbar.LENGTH_LONG)
+                        .apply {
+                            setAction("Undo") {
+                                if (!wbData.history) {
+                                    viewModel.saveWaybill(wbData)
+                                } else {
+                                    wbData.saved = true
+                                    viewModel.updateWaybill(wbData)
+                                }
+                                cv_notfound.visibility = View.GONE
+
+                            }.show()
                         }
-                    }.show()
-                } }
+                }
             }
         }
 

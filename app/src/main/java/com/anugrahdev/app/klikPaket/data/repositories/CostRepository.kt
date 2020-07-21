@@ -6,8 +6,9 @@ import com.anugrahdev.app.klikPaket.data.models.shippingcost.ShippingCostResult
 import com.anugrahdev.app.klikPaket.data.network.ApiService
 import com.anugrahdev.app.klikPaket.data.network.Resource
 import com.anugrahdev.app.klikPaket.data.network.SafeApiRequest
+import javax.inject.Inject
 
-class CostRepository(private val api:ApiService):
+class CostRepository @Inject constructor(val api: ApiService) :
     SafeApiRequest() {
 
     suspend fun getCities(query: String) =  apiRequest { api.getCities(query) }

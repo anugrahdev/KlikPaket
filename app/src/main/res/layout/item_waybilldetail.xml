@@ -10,8 +10,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:paddingHorizontal="12dp"
+        android:layout_height="@dimen/_65sdp"
+        android:paddingHorizontal="@dimen/layout_padding"
         android:orientation="horizontal">
 
         <com.github.vipulasri.timelineview.TimelineView
@@ -19,9 +19,9 @@
             app:marker="@drawable/bg_marker"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:markerSize="20dp"
-            app:lineWidth="2dp"
-            android:layout_marginEnd="8dp"
+            app:markerSize="@dimen/_16sdp"
+            app:lineWidth="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
             app:startLineColor="@color/colorPrimary"
             app:endLineColor="@color/colorPrimary"/>
         <LinearLayout

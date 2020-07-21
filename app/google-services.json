@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "767427176997",
+    "firebase_url": "https://klikpaket.firebaseio.com",
+    "project_id": "klikpaket",
+    "storage_bucket": "klikpaket.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767427176997:android:0a5b8c9ae479a60c3badcc",
+        "android_client_info": {
+          "package_name": "com.anugrahdev.app.klikPaket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767427176997-1e8j94h5n6h8cjfqab7puvpf5i4j2v96.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anugrahdev.app.klikPaket",
+            "certificate_hash": "e6cdb4c24a7aca863b2cedd530aa26a49ec81781"
+          }
+        },
+        {
+          "client_id": "767427176997-h60702kk1skcpdfar4b58d1oqm4o29ee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWKET7-u7qvTXZ1RrJ8X1Yw2pFxprF50o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767427176997-h60702kk1skcpdfar4b58d1oqm4o29ee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,36 +10,36 @@
         android:id="@+id/cv_notfound"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:visibility="invisible"
+        android:paddingTop="@dimen/layout_padding"
+        android:visibility="gone"
+        android:layout_marginVertical="@dimen/layout_label_padding"
+        android:layout_marginHorizontal="@dimen/layout_margin"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="2.8dp"
-        app:cardUseCompatPadding="true">
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="2.8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="6dp"
-            android:orientation="vertical">
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:paddingVertical="@dimen/_6sdp"
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="125dp"
-                android:paddingVertical="6dp"
+                android:layout_width="@dimen/_64sdp"
+                android:layout_height="@dimen/_64sdp"
+                android:paddingVertical="@dimen/_6sdp"
                 android:src="@drawable/ic_box"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/empty_shipment"
-                android:fontFamily="@font/poppinsbold"
-                android:textSize="18sp"
-                android:textAlignment="center"/>
+                android:paddingHorizontal="@dimen/layout_padding"
+                android:fontFamily="@font/poppinsbold"/>
 
         </LinearLayout>
-
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -47,7 +47,7 @@
         android:id="@+id/recycler_view_onprocess"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="6.5dp" />
+        android:layout_marginHorizontal="@dimen/layout_margin" />
 
 
 </FrameLayout>

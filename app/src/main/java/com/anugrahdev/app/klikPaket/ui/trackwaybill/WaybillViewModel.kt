@@ -1,5 +1,6 @@
 package com.anugrahdev.app.klikPaket.ui.trackwaybill
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +12,7 @@ import com.anugrahdev.app.klikPaket.utils.ApiException
 import com.anugrahdev.app.klikPaket.utils.NoConnectivityException
 import kotlinx.coroutines.launch
 
-class WaybillViewModel(private val repository: WaybillRepository) : ViewModel(){
+class WaybillViewModel @ViewModelInject constructor(private val repository: WaybillRepository) : ViewModel(){
 
     private val _waybillData = MutableLiveData<Resource<WaybillData>>()
     val waybillData: LiveData<Resource<WaybillData>>

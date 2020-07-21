@@ -13,12 +13,12 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusableInTouchMode="true"
-        android:paddingBottom="15dp">
+        android:focusable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="@dimen/header_height"
             android:background="@drawable/layout_roundcorner"
             android:fitsSystemWindows="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,19 +28,19 @@
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
-                android:layout_height="130dp"
+                android:layout_height="@dimen/wave_height"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_wave_1"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/ic_back"
-                android:layout_width="42dp"
-                android:layout_height="38dp"
-                android:layout_marginTop="28dp"
+                android:layout_width="@dimen/btn_back_width"
+                android:layout_height="@dimen/btn_back_height"
+                android:layout_marginTop="@dimen/margin_header_title"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:src="@drawable/ic_arrow_back"
                 app:layout_constraintEnd_toStartOf="@+id/textView"
                 app:layout_constraintHorizontal_bias="0.25"
@@ -51,13 +51,12 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="@dimen/margin_header_title"
                 android:fontFamily="@font/poppinsmed"
                 android:text="@string/ongkir"
                 android:textColor="#fefefe"
-                android:textSize="28sp"
+                android:textSize="@dimen/header_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,13 +67,12 @@
             android:id="@+id/materialCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="130dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/content_margin_top"
+            android:layout_marginBottom="@dimen/layout_margin"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -82,20 +80,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="14dp">
+                android:padding="@dimen/layout_padding">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginBottom="@dimen/layout_label_padding"
                     android:fontFamily="@font/poppinsmed"
                     android:text="@string/origin"
                     android:textColor="@color/gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_height="@dimen/editText_height"
+                    android:layout_marginBottom="@dimen/layout_margin"
                     android:background="@drawable/layout_spinner">
 
                     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -106,8 +104,8 @@
                         android:hint="@string/kota_kabupaten"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="3dp"
+                        android:paddingStart="@dimen/layout_padding"
+                        android:paddingEnd="@dimen/layout_padding"
                         android:singleLine="true" />
 
                 </LinearLayout>
@@ -115,15 +113,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginBottom="@dimen/layout_label_padding"
                     android:fontFamily="@font/poppinsmed"
                     android:text="@string/destination"
                     android:textColor="@color/gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_height="@dimen/editText_height"
+                    android:layout_marginBottom="@dimen/layout_margin"
                     android:background="@drawable/layout_spinner">
 
                     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -134,8 +132,8 @@
                         android:hint="@string/kecamatan"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="3dp"
+                        android:paddingStart="@dimen/layout_padding"
+                        android:paddingEnd="@dimen/layout_padding"
                         android:singleLine="true" />
 
                 </LinearLayout>
@@ -153,7 +151,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
+                            android:layout_marginBottom="@dimen/layout_label_padding"
                             android:fontFamily="@font/poppinsmed"
                             android:text="@string/weight"
                             android:textColor="@color/gray" />
@@ -165,24 +163,24 @@
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btn_minus"
-                                android:layout_width="40dp"
-                                android:layout_height="45dp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_35sdp"
                                 android:layout_gravity="center"
-                                android:text="-"
+                                android:text="@string/minus"
                                 android:textAlignment="center"
-                                android:textSize="18sp" />
+                                android:textSize="@dimen/_14ssp" />
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/et_weight"
-                                android:layout_width="35dp"
+                                android:layout_width="@dimen/_30sdp"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="2dp"
+                                android:layout_marginStart="@dimen/_8sdp"
+                                android:layout_marginEnd="@dimen/_2sdp"
                                 android:background="@drawable/edittext"
                                 android:inputType="number"
                                 android:maxLength="3"
-                                android:text="1"
+                                android:text="@string/_1"
                                 android:textAlignment="center"
                                 android:textStyle="bold" />
 
@@ -191,31 +189,30 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginEnd="10dp"
-                                android:text="Kg"
+                                android:text="@string/kg"
                                 android:textAlignment="center" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btn_plus"
-                                android:layout_width="40dp"
-                                android:layout_height="45dp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_35sdp"
                                 android:layout_gravity="center"
-                                android:text="+"
+                                android:text="@string/plus"
                                 android:textAlignment="center"
-                                android:textSize="17sp" />
+                                android:textSize="@dimen/_14ssp" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical"
-                        android:paddingLeft="5dp">
+                        android:layout_marginStart="@dimen/layout_margin"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="6dp"
+                            android:layout_marginBottom="@dimen/layout_label_padding"
                             android:fontFamily="@font/poppinsmed"
                             android:text="@string/courier"
                             android:textColor="@color/gray" />
@@ -223,7 +220,7 @@
                         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
                             android:id="@+id/spinner_courier"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="@dimen/_32sdp"
                             android:entries="@array/kurir" />
                     </LinearLayout>
 
@@ -248,9 +245,9 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:drawableEnd="@drawable/ic_reset"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/_12ssp"
                         app:backgroundTint="@color/gray" />
 
 
@@ -265,23 +262,19 @@
             android:id="@+id/cv_costlist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="15dp"
-            android:paddingBottom="10dp"
+            android:layout_marginHorizontal="@dimen/layout_margin"
+            android:layout_marginVertical="@dimen/layout_margin"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:cardUseCompatPadding="true"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_shippingcost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view_shippingcost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -291,7 +284,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:elevation="5dp"
+            android:elevation="@dimen/_5sdp"
             android:visibility="invisible"
             app:SpinKit_Color="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
